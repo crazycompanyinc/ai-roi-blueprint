@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI ROI Blueprint — Framework Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--text:#1a1a2e;--text2:#4a4a68;--muted:#8888a8;--brand:#5e6ad2;--accent:#7170ff;--green:#10b981;--surface:#f8f9fc;--border:#e8e8f0;--radius:8px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--text);line-height:1.7;font-size:16px;background:var(--bg)}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+h1{font-size:42px;font-weight:700;line-height:1.15;margin:48px 0 24px;letter-spacing:-0.03em}
+h2{font-size:28px;font-weight:600;margin:48px 0 16px;letter-spacing:-0.02em;color:var(--brand)}
+h3{font-size:20px;font-weight:600;margin:32px 0 12px}
+p{margin-bottom:16px;color:var(--text2)}
+ul,ol{margin:12px 0 20px 24px;color:(--text2)}
+li{margin-bottom:8px}
+strong{color:var(--text)}
+code{font-family:'JetBrains Mono',monospace;background:var(--surface);padding:2px 6px;border-radius:4px;font-size:14px}
+pre{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;overflow-x:auto;margin:16px 0 24px;font-size:14px;line-height:1.6}
+pre code{background:none;padding:0}
+blockquote{border-left:3px solid var(--brand);padding:12px 20px;margin:20px 0;background:var(--surface);border-radius:0 var(--radius) var(--radius) 0}
+blockquote p{margin:0;color:var(--text)}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--surface);font-weight:600;color:var(--text)}
+tr:hover td{background:#fafafe}
+.badge{display:inline-block;background:var(--brand);color:#fff;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:600;margin-bottom:16px}
+.cover{text-align:center;padding:80px 0 60px;background:linear-gradient(135deg,#0f0f23 0%,#1a1a3e 50%,#0f0f23 100%);color:#fff;border-radius:0 0 24px 24px;margin-bottom:48px}
+.cover h1{color:#fff;font-size:48px;margin:16px 0}
+.cover p{color:rgba(255,255,255,0.7);font-size:18px;max-width:560px;margin:0 auto}
+.cover .badge{background:rgba(94,106,210,0.3);border:1px solid rgba(94,106,210,0.5)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:20px 0}
+.card h3{margin-top:0}
+.step{display:flex;gap:16px;margin:16px 0;align-items:flex-start}
+.step-num{flex-shrink:0;width:32px;height:32px;background:var(--brand);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px}
+.step-content{flex:1}
+.step-content p{margin:0}
+.warning{background:#fff8e6;border:1px solid #f0d060;border-radius:var(--radius);padding:16px 20px;margin:20px 0}
+.warning strong{color:#92400e}
+.success{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:var(--radius);padding:16px 20px;margin:20px 0}
+.success strong{color:#065f46}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 32px;margin:32px 0}
+.toc h3{margin-top:0;color:var(--brand)}
+.toc ol{margin:0;padding-left:20px}
+.toc li{margin:8px 0}
+.toc a{color:var(--text2);text-decoration:none}
+.toc a:hover{color:var(--brand)}
+hr{border:none;border-top:1px solid var(--border);margin:48px 0}
+@media print{body{font-size:12px;line-height:1.5}h1{font-size:28px}h2{font-size:20px}h3{font-size:16px}.cover{padding:40px 0 30px;border-radius:0}pre{page-break-inside:avoid}table{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="badge">AI ROI Blueprint v1.0</div>
+  <h1>Framework Completo de ROI para Inteligencia Artificial</h1>
+  <p>La metodología paso a paso para calcular, implementar y escalar IA con números reales en tu organización.</p>
+</div>
+
+<div class="wrap">
+
+<div class="toc">
+  <h3>📋 Índice</h3>
+  <ol>
+    <li><a href="#intro">Introducción: Por qué necesitas este framework</a></li>
+    <li><a href="#fase1">Fase 1: Baseline — Dónde estás hoy</a></li>
+    <li><a href="#fase2">Fase 2: Identificación de oportunidades</a></li>
+    <li><a href="#fase3">Fase 3: Cálculo de ROI</a></li>
+    <li><a href="#fase4">Fase 4: Priorización y roadmap</a></li>
+    <li><a href="#fase5">Fase 5: Implementación y medición</a></li>
+    <li><a href="#fase6">Fase 6: Escala y gobernanza</a></li>
+    <li><a href="#casos">15 Casos de uso priorizados por industria</a></li>
+    <li><a href="#plantillas">Plantillas y checklists</a></li>
+    <li><a href="#gobernanza">Framework de gobernanza</a></li>
+  </ol>
+</div>
+
+<!-- INTRO -->
+<h2 id="intro">0. Introducción: Por qué necesitas este framework</h2>
+
+<p>El 67% de las iniciativas de IA corporativa no logran demostrar retorno medible en los primeros 18 meses. No porque la tecnología no funcione, sino porque las organizaciones:</p>
+
+<ul>
+  <li><strong>No definen un baseline</strong> antes de implementar (no saben de dónde parten)</li>
+  <li><strong>Confunden adopción con impacto</strong> (usar ChatGPT ≠ transformación)</li>
+  <li><strong>Miden lo fácil, no lo importante</strong> (horas ahorradas vs. revenue generado)</li>
+  <li><strong>No tienen gobernanza</strong> (cada equipo hace lo suyo sin coordinación)</li>
+</ul>
+
+<p>Este framework resuelve esos 4 problemas con una metodología probada en 3 fases y 6 pasos que puedes ejecutar en 90 días.</p>
+
+<div class="success">
+  <strong>Resultado esperado:</strong> Al completar este framework tendrás un documento ejecutivo con ROI proyectado, roadmap de 90 días, y las herramientas para medir impacto real trimestre a trimestre.
+</div>
+
+<hr>
+
+<!-- FASE 1 -->
+<h2 id="fase1">Fase 1: Baseline — Dónde estás hoy</h2>
+
+<p>Antes de calcular retorno, necesitas saber exactamente dónde está tu organización. Esta fase toma 1-2 semanas.</p>
+
+<h3>1.1 Auditoría de madurez IA (5 dimensiones)</h3>
+
+<p>Evalúa tu organización en cada dimensión del 1 al 5:</p>
+
+<table>
+  <tr><th>Dimensión</th><th>1 — Inicial</th><th>3 — En desarrollo</th><th>5 — Optimizado</th></tr>
+  <tr><td><strong>Datos</strong></td><td>Silos, sin governance</td><td>Parcialmente integrados</td><td>Data lake, accesible, gobernado</td></tr>
+  <tr><td><strong>Procesos</strong></td><td>Manuales, sin documentar</td><td>Documentados, algunos automatizados</td><td>Automatizados, medibles, optimizados</td></tr>
+  <tr><td><strong>Talento</strong></td><td>Sin skills de IA</td><td>Algunos perfiles, formación ad-hoc</td><td>Equipos dedicados, formación continua</td></tr>
+  <tr><td><strong>Infraestructura</strong></td><td>On-premise, legacy</td><td>Cloud parcial, APIs limitadas</td><td>Cloud-native, API-first, escalable</td></tr>
+  <tr><td><strong>Cultura</strong></td><td>Resistencia al cambio</td><td>Curiosidad, experimentos aislados</td><td>Data-driven, experimentación sistemática</td></tr>
+</table>
+
+<div class="card">
+  <h3>📝 Plantilla: Score de Madurez</h3>
+  <p>Tu puntuación total (máx 25):</p>
+  <ul>
+    <li><strong>5-10:</strong> Foco en fundamentos. Empieza por datos y procesos antes de IA.</li>
+    <li><strong>11-17:</strong> Base sólida. Puedes empezar con casos de uso de alto impacto.</li>
+    <li><strong>18-25:</strong> Listo para escala. Enfócate en gobernanza y multiplicación.</li>
+  </ul>
+</div>
+
+<h3>1.2 Mapeo de procesos actuales</h3>
+
+<p>Documenta los 10 procesos que más horas consumen en tu organización:</p>
+
+<pre><code>Proceso | Horas/semana | Coste/hora | Coste semanal | Repetitivo? | Datos disponibles?
+--------|-------------|------------|---------------|-------------|------------------
+Ej: Reporting financiero | 40h | €35 | €1,400 | Sí | Sí, estructurados
+Ej: Atención al cliente | 120h | €22 | €2,640 | Parcialmente | Sí, tickets
+Ej: Onboarding empleados | 16h | €30 | €480 | Sí | Documentación</code></pre>
+
+<h3>1.3 Baseline financiero</h3>
+
+<p>Registra estos números antes de cualquier implementación:</p>
+
+<div class="card">
+  <h3>📊 Baseline Financiero</h3>
+  <ul>
+    <li>Coste total de personal operativo: <strong>€______ /mes</strong></li>
+    <li>Coste de herramientas actuales: <strong>€______ /mes</strong></li>
+    <li>Horas semanales en tareas repetitivas: <strong>______ h</strong></li>
+    <li>Coste de errores/retrabajo: <strong>€______ /mes</strong></li>
+    <li>Revenue actual: <strong>€______ /mes</strong></li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- FASE 2 -->
+<h2 id="fase2">Fase 2: Identificación de oportunidades</h2>
+
+<p>Con el baseline claro, identifica dónde IA puede tener mayor impacto. No todo vale.</p>
+
+<h3>2.1 Matriz de oportunidad IA</h3>
+
+<p>Evalúa cada proceso del baseline en dos ejes:</p>
+
+<ul>
+  <li><strong>Eje X — Facilidad de implementación:</strong> ¿Hay datos? ¿Es repetitivo? ¿Hay herramientas disponibles?</li>
+  <li><strong>Eje Y — Impacto en costes/revenue:</strong> ¿Cuánto cuesta hoy? ¿Cuánto podría ahorrar/generar?</li>
+</ul>
+
+<pre><text>
+              ALTO IMPACTO
+                  │
+    ┌─────────────┼─────────────┐
+    │  PLATAFORMAS │   ESTRELLA   │
+    │  (hacer      │   (hacer     │
+    │   pronto)    │   primero)   │
+    ├─────────────┼─────────────┤
+    │  RELLENO     │   ESTRATÉGICO│
+    │  (delegar)   │   (planificar│
+    │              │   a 12 meses)│
+    └─────────────┼─────────────┘
+                  │
+              BAJO IMPACTO
+   BAJA ────────────────── ALTA
+        FACILIDAD
+</text></pre>
+
+<h3>2.2 Quick Wins (implementación &lt; 30 días)</h3>
+
+<p>Busca casos que cumplan TODOS estos criterios:</p>
+
+<div class="success">
+  <strong>Checklist Quick Win:</strong>
+  <ul style="margin:8px 0 0 20px">
+    <li>Datos disponibles y accesibles</li>
+    <li>Proceso documentado y repetitivo</li>
+    <li>Herramienta de IA disponible (no requiere build)</li>
+    <li>ROI medible en &lt; 90 días</li>
+    <li>Stakeholder interno identificado</li>
+  </ul>
+</div>
+
+<h3>2.3 Casos estratégicos (implementación 3-12 meses)</h3>
+
+<p>Proyectos de alto impacto que requieren más preparación:</p>
+
+<ul>
+  <li>Modelos predictivos propios</li>
+  <li>Automatización de extremo a extremo</li>
+  <li>Integración de IA en producto/servicio</li>
+  <li>Asistentes inteligentes para clientes</li>
+</ul>
+
+<hr>
+
+<!-- FASE 3 -->
+<h2 id="fase3">Fase 3: Cálculo de ROI</h2>
+
+<p>La fórmula que importa no es complicada. Lo importante es ser honesto con los inputs.</p>
+
+<h3>3.1 Fórmula base</h3>
+
+<pre><code>ROI (anual) = [(Ahorro anual + Revenue incremental) - Coste total de implementación] / Coste total de implementación × 100
+
+Donde:
+- Ahorro anual = Horas ahorradas/semana × Coste hora × 52
+- Revenue incremental = Estimación conservadora de nuevo revenue atribuible
+- Coste total = Licencias + Implementación + Formación + Mantenimiento (año 1)</code></pre>
+
+<h3>3.2 Ejemplo real</h3>
+
+<table>
+  <tr><th>Concepto</th><th>Cálculo</th><th>Importe</th></tr>
+  <tr><td>Horas ahorradas/semana</td><td>50 empleados × 4h automatizadas</td><td>200h</td></tr>
+  <tr><td>Coste medio hora</td><td>—</td><td>€35</td></tr>
+  <tr><td>Ahorro semanal</td><td>200h × €35</td><td>€7,000</td></tr>
+  <tr><td>Ahorro anual</td><td>€7,000 × 52</td><td>€364,000</td></tr>
+  <tr><td>Coste implementación</td><td>Licencias + setup + formación</td><td>€45,000</td></tr>
+  <tr><td><strong>ROI Año 1</strong></td><td>(€364,000 - €45,000) / €45,000</td><td><strong>709%</strong></td></tr>
+</table>
+
+<div class="warning">
+  <strong>⚠️ Error común:</strong> No restes el coste de implementación del año 1. Muchas empresas olvidan incluir el tiempo interno de configuración, formación y gestión del cambio. Suma todo.
+</div>
+
+<h3>3.3 Calculadora por caso de uso</h3>
+
+<div class="card">
+  <h3>📊 Template: Calculadora por iniciativa</h3>
+  <p><strong>Nombre de la iniciativa:</strong> ________________________________</p>
+  <table>
+    <tr><td>Horas manuales/semana hoy</td><td>______ h</td></tr>
+    <tr><td>% automatizable con IA</td><td>______ %</td></tr>
+    <tr><td>Horas ahorradas/semana</td><td>______ h</td></tr>
+    <tr><td>Coste medio hora</td><td>€ ______</td></tr>
+    <tr><td>Ahorro bruto anual</td><td>€ ______</td></tr>
+    <tr><td>Coste licencias IA (anual)</td><td>€ ______</td></tr>
+    <tr><td>Coste implementación (one-time)</td><td>€ ______</td></tr>
+    <tr><td>Coste formación</td><td>€ ______</td></tr>
+    <tr><td><strong>Coste total año 1</strong></td><td><strong>€ ______</strong></td></tr>
+    <tr><td><strong>ROI Año 1</strong></td><td><strong>______ %</strong></td></tr>
+    <tr><td><strong>ROI Año 2</strong></td><td><strong>______ %</strong></td></tr>
+    <tr><td>Payback (meses)</td><td>______</td></tr>
+  </table>
+</div>
+
+<h3>3.4 Sensibilidad: escenarios conservador / moderado / optimista</h3>
+
+<p>Siempre calcula 3 escenarios:</p>
+
+<table>
+  <tr><th>Variable</th><th>Conservador</th><th>Moderado</th><th>Optimista</th></tr>
+  <tr><td>% automatización</td><td>40%</td><td>60%</td><td>80%</td></tr>
+  <tr><td>Adopción del equipo</td><td>50%</td><td>75%</td><td>90%</td></tr>
+  <tr><td>Calidad output IA</td><td>Requiere revisión 50%</td><td>Requiere revisión 20%</td><td>Usable directo</td></tr>
+  <tr><td><strong>ROI resultante</strong></td><td><strong>___%</strong></td><td><strong>___%</strong></td><td><strong>___%</strong></td></tr>
+</table>
+
+<p>Presenta siempre el escenario moderado al C-Suite. Ten el conservador listo para preguntas difíciles.</p>
+
+<hr>
+
+<!-- FASE 4 -->
+<h2 id="fase4">Fase 4: Priorización y roadmap</h2>
+
+<h3>4.1 Matriz de priorización</h3>
+
+<p>Puntúa cada iniciativa (1-5) en:</p>
+
+<ol>
+  <li><strong>Impacto financiero</strong> (ahorro + revenue)</li>
+  <li><strong>Facilidad de implementación</strong> (datos, herramientas, complejidad)</li>
+  <li><strong>Velocidad de resultados</strong> (semanas hasta primer impacto)</li>
+  <li><strong>Valor estratégico</strong> (alineación con objetivos del negocio)</li>
+  <li><strong>Riesgo</strong> (inverso: 5 = bajo riesgo)</li>
+</ol>
+
+<p><strong>Puntuación total = suma de los 5 criterios (máx 25)</strong></p>
+
+<h3>4.2 Roadmap de 90 días</h3>
+
+<div class="card">
+  <h3>📅 Mes 1: Fundamentos</h3>
+  <ul>
+    <li>Completar auditoría de madurez</li>
+    <li>Seleccionar 2-3 quick wins</li>
+    <li>Definir KPIs y baseline</li>
+    <li>Identificar champions por equipo</li>
+    <li>Configurar herramientas de IA</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>📅 Mes 2: Pilotos</h3>
+  <ul>
+    <li>Lanzar pilotos de quick wins</li>
+    <li>Formar equipos en uso de herramientas</li>
+    <li>Medir resultados semanalmente</li>
+    <li>Iterar y ajustar</li>
+    <li>Documentar lecciones aprendidas</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>📅 Mes 3: Escala</h3>
+  <ul>
+    <li>Escalar pilotos exitosos</li>
+    <li>Comunicar resultados al C-Suite</li>
+    <li>Planificar siguiente fase (casos estratégicos)</li>
+    <li>Establecer gobernanza básica</li>
+    <li>Calcular ROI real vs. proyectado</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- FASE 5 -->
+<h2 id="fase5">Fase 5: Implementación y medición</h2>
+
+<h3>5.1 Principios de implementación</h3>
+
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-content"><p><strong>Empezar pequeño, pensar grande.</strong> Un piloto de 2 semanas con 5 usuarios vale más que un plan perfecto para 500.</p></div>
+</div>
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-content"><p><strong>Medir desde el día 1.</strong> Si no tienes baseline, no podrás demostrar impacto.</p></div>
+</div>
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-content"><p><strong>Involucrar usuarios finales.</strong> No impongas herramientas. Co-crea con los equipos.</p></div>
+</div>
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-content"><p><strong>Iterar rápido.</strong> Ciclos de 2 semanas. Mide, ajusta, repite.</p></div>
+</div>
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-content"><p><strong>Documentar todo.</strong> Lo que no se documenta no se puede escalar.</p></div>
+</div>
+
+<h3>5.2 KPIs que importan</h3>
+
+<table>
+  <tr><th>Categoría</th><th>KPI</th><th>Cómo medirlo</th><th>Frecuencia</th></tr>
+  <tr><td><strong>Eficiencia</strong></td><td>Horas ahorradas</td><td>Antes vs. después por proceso</td><td>Semanal</td></tr>
+  <tr><td><strong>Calidad</td>strong></td><td>Tasa de error</td><td>Errores antes vs. después</td><td>Semanal</td></tr>
+  <tr><td><strong>Adopción</strong></td><td>% uso activo</td><td>Logs de herramienta / encuesta</td><td>Semanal</td></tr>
+  <tr><td><strong>Financiero</strong></td><td>Coste por transacción</td><td>Coste total / unidades procesadas</td><td>Mensual</td></tr>
+  <tr><td><strong>Financiero</strong></td><td>ROI acumulado</td><td>Fórmula del framework</td><td>Mensual</td></tr>
+  <tr><td><strong>Satisfacción</strong></td><td>NPS interno</td><td>Encuesta a usuarios</td><td>Mensual</td></tr>
+</table>
+
+<h3>5.3 Reporte mensual al C-Suite</h3>
+
+<div class="card">
+  <h3>📊 Template: Reporte mensual</h3>
+  <p><strong>Mes:</strong> ______ <strong>Iniciativa:</strong> ______</p>
+  <ul>
+    <li>Horas ahorradas este mes: ______</li>
+    <li>Ahorro financiero: €______</li>
+    <li>Tasa de adopción: ______%</li>
+    <li>Principales problemas: ______</li>
+    <li>Ajustes realizados: ______</li>
+    <li>ROI acumulado: ______%</li>
+    <li>Siguiente mes: ______</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- FASE 6 -->
+<h2 id="fase6">Fase 6: Escala y gobernanza</h2>
+
+<h3>6.1 De piloto a producción</h3>
+
+<p>Checklist para escalar un piloto exitoso:</p>
+
+<div class="success">
+  <ul style="margin:8px 0 0 20px">
+    <li>ROI positivo demostrado en piloto (mínimo 30 días)</li>
+    <li>Documentación de proceso completo</li>
+    <li>Plan de formación para nuevos usuarios</li>
+    <li>Soporte técnico definido</li>
+    <li>Métricas de éxito acordadas con stakeholders</li>
+    <li>Presupuesto aprobado para escala</li>
+    <li>Responsable de la iniciativa identificado</li>
+  </ul>
+</div>
+
+<h3>6.2 Modelo de gobernanza IA</h3>
+
+<p>Cuando tengas más de 3 iniciativas activas, necesitas estructura:</p>
+
+<pre><code>┌─────────────────────────────────────────────┐
+│           COMITÉ DE IA (trimestral)          │
+│  CEO / CTO / CFO + Líderes de área          │
+│  → Aprobar presupuesto, priorizar iniciativas│
+├─────────────────────────────────────────────┤
+│           EQUIPO DE IA (semanal)             │
+│  AI Lead + Engineering + Data + Domain       │
+│  → Ejecutar, medir, iterar                   │
+├─────────────────────────────────────────────┤
+│           CHAMPIONS (continuo)               │
+│  1 por equipo/departamento                   │
+│  → Adopción, feedback, primeros usuarios     │
+└─────────────────────────────────────────────┘</code></pre>
+
+<hr>
+
+<!-- CASOS DE USO -->
+<h2 id="casos">15 Casos de uso priorizados por industria</h2>
+
+<h3>🏢 Servicios profesionales / Consultoría</h3>
+<table>
+  <tr><th>#</th><th>Caso de uso</th><th>Herramientas</th><th>ROI estimado</th><th>Complejidad</th></tr>
+  <tr><td>1</td><td>Generación automática de propuestas</td><td>GPT-4 + CRM</td><td>300-500%</td><td>Baja</td></tr>
+  <tr><td>2</td><td>Análisis de contratos y due diligence</td><td>Claude + OCR</td><td>400-600%</td><td>Media</td></tr>
+  <tr><td>3</td><td>Research y síntesis de informes</td><td>Perplexity + GPT</td><td>250-400%</td><td>Baja</td></tr>
+</table>
+
+<h3>🛒 E-commerce / Retail</h3>
+<table>
+  <tr><th>#</th><th>Caso de uso</th><th>Herramientas</th><th>ROI estimado</th><th>Complejidad</th></tr>
+  <tr><td>4</td><td>Personalización de recomendaciones</td><td>ML + CDP</td><td>200-350%</td><td>Alta</td></tr>
+  <tr><td>5</td><td>Atención al cliente automatizada</td><td>Chatbot + KB</td><td>300-500%</td><td>Media</td></tr>
+  <tr><td>6</td><td>Generación de descripciones de producto</td><td>GPT-4 + PIM</td><td>400-700%</td><td>Baja</td></tr>
+  <tr><td>7</td><td>Predicción de demanda</td><td>ML + ERP</td><td>150-300%</td><td>Alta</td></tr>
+</table>
+
+<h3>🏭 Manufacturing / Industria</h3>
+<table>
+  <tr><th>#</th><th>Caso de uso</th><th>Herramientas</th><th>ROI estimado</th><th>Complejidad</th></tr>
+  <tr><td>8</td><td>Mantenimiento predictivo</td><td>IoT + ML</td><td>200-400%</td><td>Alta</td></tr>
+  <tr><td>9</td><td>Control de calidad visual</td><td>Computer Vision</td><td>250-450%</td><td>Media</td></tr>
+  <tr><td>10</td><td>Optimización de scheduling</td><td>Optimization AI</td><td>150-300%</td><td>Media</td></tr>
+</table>
+
+<h3>🏥 Salud</h3>
+<table>
+  <tr><th>#</th><th>Caso de uso</th><th>Herramientas</th><th>ROI estimado</th><th>Complejidad</th></tr>
+  <tr><td>11</td><td>Triaje y asistencia al diagnóstico</td><td>LLM + Historiales</td><td>200-400%</td><td>Alta</td></tr>
+  <tr><td>12</td><td>Automatización de documentación clínica</td><td>NLP + EHR</td><td>300-500%</td><td>Media</td></tr>
+</table>
+
+<h3>💰 Fintech / Servicios financieros</h3>
+<table>
+  <tr><th>#</th><th>Caso de uso</th><th>Herramientas</th><th>ROI estimado</th><th>Complejidad</th></tr>
+  <tr><td>13</td><td>Detección de fraude</td><td>ML + Transacciones</td><td>300-600%</td><td>Alta</td></tr>
+  <tr><td>14</td><td>Análisis de riesgo crediticio</td><td>ML + Scoring</td><td>200-400%</td><td>Alta</td></tr>
+  <tr><td>15</td><td>Onboarding automatizado (KYC)</td><td>OCR + NLP + RPA</td><td>400-700%</td><td>Media</td></tr>
+</table>
+
+<hr>
+
+<!-- PLANTILLAS -->
+<h2 id="plantillas">Plantillas y checklists</h2>
+
+<h3>📋 Checklist: ¿Estás listo para IA?</h3>
+
+<div class="card">
+  <p><strong>Datos</strong></p>
+  <ul>
+    <li>☐ Tienes datos históricos accesibles (mínimo 6 meses)</li>
+    <li>☐ Los datos están en formato digital y estructurado</li>
+    <li>☐ Existe un responsable de calidad de datos</li>
+    <li>☐ Tienes políticas de privacidad y uso de datos</li>
+  </ul>
+  <p><strong>Procesos</strong></p>
+  <ul>
+    <li>☐ Los procesos objetivo están documentados</li>
+    <li>☐ Puedes medir el tiempo actual por tarea</li>
+    <li>☐ Tienes un baseline de costes</li>
+    <li>☐ Los usuarios finales están identificados</li>
+  </ul>
+  <p><strong>Organización</strong></p>
+  <ul>
+    <li>☐ Hay un sponsor ejecutivo (C-level)</li>
+    <li>☐ Existe presupuesto aprobado</li>
+    <li>☐ Hay un equipo responsable identificado</li>
+    <li>☐ Se han definido métricas de éxito</li>
+  </ul>
+  <p><strong>Tecnología</strong></p>
+  <ul>
+    <li>☐ Infraestructura cloud disponible</li>
+    <li>☐ APIs de herramientas de IA evaluadas</li>
+    <li>☐ Plan de integración con sistemas actuales</li>
+    <li>☐ Plan de seguridad y compliance</li>
+  </ul>
+</div>
+
+<h3>📋 Checklist: Evaluación de proveedores de IA</h3>
+
+<div class="card">
+  <table>
+    <tr><th>Criterio</th><th>Peso</th><th>Proveedor A</th><th>Proveedor B</th></tr>
+    <tr><td>Precisión del modelo</td><td>25%</td><td>__/5</td><td>__/5</td></tr>
+    <tr><td>Facilidad de integración</td><td>20%</td><td>__/5</td><td>__/5</td></tr>
+    <tr><td>Coste (TCO 3 años)</td><td>20%</td><td>__/5</td><td>__/5</td></tr>
+    <tr><td>Soporte y SLA</td><td>15%</td><td>__/5</td><td>__/5</td></tr>
+    <tr><td>Seguridad y compliance</td><td>10%</td><td>__/5</td><td>__/5</td></tr>
+    <tr><td>Escalabilidad</td><td>10%</td><td>__/5</td><td>__/5</td></tr>
+    <tr><td><strong>Puntuación total</strong></td><td></td><td><strong>__/5</strong></td><td><strong>__/5</strong></td></tr>
+  </table>
+</div>
+
+<hr>
+
+<!-- GOBERNANZA -->
+<h2 id="gobernanza">Framework de gobernanza</h2>
+
+<h3>Principios rectores</h3>
+
+<ol>
+  <li><strong>IA como amplificador, no reemplazo.</strong> El objetivo es potenciar a las personas, no eliminar puestos.</li>
+  <li><strong>Transparencia.</strong> Los usuarios siempre deben saber cuándo interactúan con IA.</li>
+  <li><strong>Humano en el bucle.</strong> Decisiones críticas siempre con supervisión humana.</li>
+  <li><strong>Iteración responsable.</strong> Medir impacto antes de escalar.</li>
+  <li><strong>Datos como activo.</strong> Invertir en calidad de datos tanto como en modelos.</li>
+</ol>
+
+<h3>Política de uso responsable</h3>
+
+<div class="card">
+  <h3>📜 Política mínima de uso de IA</h3>
+  <p><strong>1. Uso permitido:</strong></p>
+  <ul>
+    <li>Automatización de tareas repetitivas y documentadas</li>
+    <li>Asistencia en análisis de datos y generación de informes</li>
+    <li>Búsqueda y síntesis de información</li>
+    <li>Borradores de comunicación interna y externa (con revisión)</li>
+  </ul>
+  <p><strong>2. Uso restringido (requiere aprobación):</strong></p>
+  <ul>
+    <li>Procesamiento de datos personales sensibles</li>
+    <li>Decisiones que afecten a clientes sin revisión humana</li>
+    <li>Generación de contenido público sin supervisión</li>
+  </ul>
+  <p><strong>3. Uso prohibido:</strong></p>
+  <ul>
+    <li>Introducir datos confidenciales en herramientas no aprobadas</li>
+    <li>Usar output de IA como verdad sin verificación</li>
+    <li>Automatizar decisiones de personal sin supervisión</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- CIERRE -->
+<h2>Próximos pasos</h2>
+
+<p>Con este framework tienes todo lo necesario para:</p>
+
+<ol>
+  <li><strong>Esta semana:</strong> Completa la auditoría de madurez y el baseline financiero</li>
+  <li><strong>Próximas 2 semanas:</strong> Identifica 3 quick wins con la matriz de oportunidad</li>
+  <li><strong>Próximo mes:</strong> Lanza tu primer piloto con la calculadora de ROI</li>
+  <li><strong>90 días:</strong> Presenta resultados al C-Suite con el reporte mensual</li>
+</ol>
+
+<div class="success">
+  <strong>Recuerda:</strong> El objetivo no es implementar IA. Es generar impacto medible. Empieza por el problema, no por la tecnología.
+</div>
+
+<p style="text-align:center;color:var(--muted);margin:48px 0 24px;font-size:14px">
+  AI ROI Blueprint v1.0 — Framework completo<br>
+  Preguntas: hola@airoiblueprint.com
+</p>
+
+</div>
+</body>
+</html>
