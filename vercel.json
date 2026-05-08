@@ -2,6 +2,11 @@
   "version": 2,
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/gracias.html", "dest": "/gracias.html" },
+    { "src": "/privacidad.html", "dest": "/privacidad.html" },
+    { "src": "/terminos.html", "dest": "/terminos.html" },
+    { "src": "/producto/(.*)", "dest": "/producto/$1" },
+    { "src": "/(.+)\\.html$", "dest": "/$1.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
