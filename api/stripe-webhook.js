@@ -64,40 +64,60 @@ function buildEmailHTML(plan) {
 }
 
 module.exports = async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const { email, plan } = req.body || {};
-    if (!email) return res.status(400).json({ error: 'email requerido' });
+    const sig = req.headers['stripe-signature'];
+    if (!sig) return res.status(400).json({ error: 'Missing signature' });
 
-    const validPlan = (plan === 'starter' || plan === 'professional') ? plan : 'professional';
-    const pass = process.env.GMAIL_APP_PASSWORD;
-    if (!pass) return res.status(500).json({ error: 'Servicio no configurado' });
+    const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
+    if (!STRIPE_WEBHOOK_SECRET) {
+      console.error('STRIPE_WEBHOOK_SECRET not set');
+      return res.status(500).json({ error: 'Webhook not configured' });
+    }
 
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'crazycompanyincmail@gmail.com',
-        pass,
-      },
-    });
+    let event;
+    try {
+      const Stripe = require('stripe');
+      const stripe = Stripe(process.env.STRIPE_SECRET_KEY || '');
+      event = stripe.webhooks.constructEvent(req.body, sig, STRIPE_WEBHOOK_SECRET);
+    } catch (err) {
+      console.error('Webhook signature failed:', err.message);
+      return res.status(400).json({ error: 'Invalid signature' });
+    }
 
-    await transporter.sendMail({
-      from: '"AI ROI Blueprint" <crazycompanyincmail@gmail.com>',
-      to: email,
-      subject: `Tu plan ${PLAN_DETAILS[validPlan].name} — Acceso al Framework ROI IA`,
-      html: buildEmailHTML(validPlan),
-    });
+    if (event.type === 'checkout.session.completed') {
+      const session = event.data.object;
+      const email = session.customer_details?.email || session.customer_email;
+      const amount = session.amount_total;
 
-    return res.status(200).json({ ok: true });
+      if (email) {
+        const plan = amount >= 9700 ? 'professional' : 'starter';
+        const pass = process.env.GMAIL_APP_PASSWORD;
+
+        if (pass) {
+          const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            auth: { user: 'crazycompanyincmail@gmail.com', pass },
+          });
+
+          await transporter.sendMail({
+            from: '"AI ROI Blueprint" <crazycompanyincmail@gmail.com>',
+            to: email,
+            subject: `Tu plan ${PLAN_DETAILS[plan].name} — Acceso al Framework ROI IA`,
+            html: buildEmailHTML(plan),
+          });
+
+          console.log(`Post-purchase email sent to ${email} for plan ${plan}`);
+        }
+      }
+    }
+
+    return res.status(200).json({ received: true });
   } catch (err) {
-    console.error('sequence-email error:', err.message);
+    console.error('Webhook error:', err.message);
     return res.status(500).json({ error: err.message });
   }
 };

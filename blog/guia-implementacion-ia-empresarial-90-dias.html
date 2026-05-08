@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guia de implementacion IA empresarial en 90 dias — AI ROI Blueprint</title>
+<meta name="description" content="Plan de 90 dias para implementar inteligencia artificial en tu empresa. Fases, hitos, responsables y metricas de exito semana a semana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06060a;--surface:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.07);--text:#e8eaed;--text2:#b0b8c4;--muted:#6b7280;--brand:#6366f1;--accent:#818cf8;--green:#10b981}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{display:flex;align-items:center;gap:8px;padding:16px 32px;color:var(--text);text-decoration:none;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.04);position:sticky;top:0;z-index:50;background:rgba(6,6,10,0.92);backdrop-filter:blur(16px)}
+.nav:hover{text-decoration:none;color:var(--accent)}
+.logo-dot{width:8px;height:8px;background:var(--brand);border-radius:50%;display:inline-block}
+.article{max-width:720px;margin:0 auto;padding:60px 32px 80px}
+.tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--brand);background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);padding:3px 10px;border-radius:9999px}
+h1{font-size:36px;font-weight:700;letter-spacing:-0.03em;margin:16px 0 8px;line-height:1.2}
+.meta{color:var(--muted);font-size:14px;margin-bottom:40px}
+h2{font-size:22px;font-weight:600;margin:40px 0 16px;letter-spacing:-0.01em;color:var(--text)}
+h3{font-size:17px;font-weight:600;margin:24px 0 8px;color:var(--accent)}
+p,li{color:var(--text2);font-size:16px;line-height:1.8;margin-bottom:12px}
+ul,ol{padding-left:24px;margin:12px 0 20px}
+li{margin-bottom:8px}
+.phase{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;margin:24px 0}
+.phase h3{margin-top:0;font-size:18px;color:var(--text)}
+.phase .weeks{font-size:12px;font-weight:600;color:var(--brand);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.phase .deliverable{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);border-radius:6px;padding:12px 16px;margin-top:16px;font-size:14px;color:var(--text2)}
+.phase .deliverable strong{color:var(--green)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px 24px 16px;margin:32px 0}
+.toc h2{font-size:12px;font-weight:600;color:var(--muted);margin:0 0 12px;text-transform:uppercase;letter-spacing:0.5px}
+.toc ol{padding-left:20px;margin:0}
+.toc li{font-size:14px;margin-bottom:6px}
+.toc a{color:var(--text2)}
+.toc a:hover{color:var(--accent)}
+.cta-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:40px;text-align:center;margin:48px 0}
+.cta-bar h2{margin:0 0 8px;font-size:24px}
+.cta-bar p{color:var(--text2);font-size:15px;margin-bottom:20px}
+.btn{background:var(--brand);color:#fff;padding:12px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--accent);color:#fff;text-decoration:none}
+.footer{text-align:center;padding:40px 0;border-top:1px solid var(--border);margin-top:64px}
+.footer a{color:var(--muted);font-size:13px;margin:0 12px}
+.footer p{color:var(--muted);font-size:12px;margin-top:16px}
+@media(max-width:640px){.article{padding:40px 20px 60px}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<a href="/" class="nav"><span class="logo-dot"></span> AI ROI Blueprint</a>
+<div class="article">
+  <span class="tag">Estrategia</span>
+  <h1>Guia de implementacion IA empresarial en 90 dias</h1>
+  <div class="meta">Mayo 2025 · 15 min de lectura</div>
+
+  <p>El 87% de los proyectos de IA que fracasan lo hacen por razones no tecnicas: falta de alineacion con el negocio, ausencia de sponsor ejecutivo, o expectativas irreales sobre los tiempos. Esta guia te da el plan de 90 dias que elimina esos riesgos.</p>
+
+  <div class="toc">
+    <h2>Plan de 90 dias</h2>
+    <ol>
+      <li><a href="#fase1">Fase 1, Semana 1-2: Auditoria y descubrimiento</a></li>
+      <li><a href="#fase2">Fase 2, Semana 3-4: Estrategia y seleccion de casos</a></li>
+      <li><a href="#fase3">Fase 3, Semana 5-8: Implementacion del piloto</a></li>
+      <li><a href="#fase4">Fase 4, Semana 9-10: Medicion y validacion</a></li>
+      <li><a href="#fase5">Fase 5, Semana 11-12: Optimizacion y documentacion</a></li>
+      <li><a href="#fase6">Fase 6, Semana 13+: Escalado</a></li>
+    </ol>
+  </div>
+
+  <h2>Antes de empezar: las 3 condiciones previas</h2>
+  <p>Sin estas tres condiciones, no empieces. Posterga y prepárate primero.</p>
+  <ul>
+    <li><strong>Sponsor ejecutivo:</strong> Alguien con poder de decision y presupuesto que respalde el proyecto activamente.</li>
+    <li><strong>Acceso a datos:</strong> Confirmacion de que los datos necesarios existen, son accesibles, y tienen calidad minima.</li>
+    <li><strong>Problema de negocio claro:</strong> Un problema especifico, medible, con un owner de negocio que se beneficiara de la solucion.</li>
+  </ul>
+
+  <div class="phase" id="fase1">
+    <div class="weeks">Semana 1-2</div>
+    <h3>Fase 1: Auditoria y descubrimiento</h3>
+    <p>Objetivo: entender el estado actual de datos, procesos y capacidades. No se toca una sola linea de codigo.</p>
+    <ul>
+      <li>Entrevistas con stakeholders de cada departamento afectado</li>
+      <li>Inventario de fuentes de datos: que datos existen, donde estan, quien los gestiona</li>
+      <li>Evaluacion de calidad de datos (completitud, consistencia, actualidad)</li>
+      <li>Mapeo de procesos candidatos a automatizacion</li>
+      <li>Evaluacion de infraestructura tecnica actual</li>
+    </ul>
+    <div class="deliverable"><strong>Entregable:</strong> Informe de auditoria con mapa de datos, procesos candidatos priorizados, y evaluacion de brecha de capacidades.</div>
+  </div>
+
+  <div class="phase" id="fase2">
+    <div class="weeks">Semana 3-4</div>
+    <h3>Fase 2: Estrategia y seleccion de casos de uso</h3>
+    <p>Objetivo: elegir el proyecto piloto con mayor probabilidad de exito y ROI demostrable.</p>
+    <ul>
+      <li>Matriz de priorizacion: impacto vs viabilidad para cada candidato</li>
+      <li>Definicion de metricas de exito especificas (KPI antes/despues)</li>
+      <li>Estimacion de ROI usando la metodologia del Framework</li>
+      <li>Seleccion del piloto: un solo caso de uso, acotado, con datos disponibles</li>
+      <li>Business case para aprobacion ejecutiva</li>
+    </ul>
+    <div class="deliverable"><strong>Entregable:</strong> Business case del piloto con ROI estimado, plan de proyecto, y aprobacion del sponsor.</div>
+  </div>
+
+  <div class="phase" id="fase3">
+    <div class="weeks">Semana 5-8</div>
+    <h3>Fase 3: Implementacion del piloto</h3>
+    <p>Objetivo: construir y desplegar la primera version funcional. Iterar rapido, no buscar perfeccion.</p>
+    <ul>
+      <li>Preparacion de datos: limpieza, transformacion, feature engineering</li>
+      <li>Seleccion de enfoque: API existente vs modelo custom vs hibrido</li>
+      <li>Desarrollo iterativo en sprints de 1 semana</li>
+      <li>Pruebas con datos reales y feedback del equipo de negocio</li>
+      <li>Despliegue en entorno controlado (no produccion aun)</li>
+    </ul>
+    <div class="deliverable"><strong>Entregable:</strong> Piloto funcional en entorno de pruebas, documentado, con metricas de Precision iniciales.</div>
+  </div>
+
+  <div class="phase" id="fase4">
+    <div class="weeks">Semana 9-10</div>
+    <h3>Fase 4: Medicion y validacion</h3>
+    <p>Objetivo: demostrar que el piloto genera valor medible antes de escalar.</p>
+    <ul>
+      <li>Despliegue en produccion limitada (grupo de control vs grupo de prueba)</li>
+      <li>Medicion de KPIs definidos en Fase 2</li>
+      <li>Comparativa antes/despues con significancia estadistica</li>
+      <li>Recopilacion de feedback cualitativo de usuarios</li>
+      <li>Calculo de ROI real vs estimado</li>
+    </ul>
+    <div class="deliverable"><strong>Entregable:</strong> Informe de resultados con metricas comparadas, ROI real, y recomendacion de escalado.</div>
+  </div>
+
+  <div class="phase" id="fase5">
+    <div class="weeks">Semana 11-12</div>
+    <h3>Fase 5: Optimizacion y documentacion</h3>
+    <p>Objetivo: preparar el piloto para escalado organizacional.</p>
+    <ul>
+      <li>Optimizacion de Precision basada en datos reales de produccion</li>
+      <li>Documentacion tecnica y de usuario</li>
+      <li>Procedimientos de monitorizacion y mantenimiento</li>
+      <li>Plan de formacion para el equipo que operara la solucion</li>
+      <li>Identificacion de segundo caso de uso para escalado</li>
+    </ul>
+    <div class="deliverable"><strong>Entregable:</strong> Solucion optimizada y documentada, plan de escalado, y caso de uso #2 identificado.</div>
+  </div>
+
+  <div class="phase" id="fase6">
+    <div class="weeks">Semana 13+</div>
+    <h3>Fase 6: Escalado</h3>
+    <p>Objetivo: expandir la solucion a mas equipos, departamentos o casos de uso.</p>
+    <ul>
+      <li>Despliegue a toda la organizacion o siguiente unidad de negocio</li>
+      <li>Implementacion de MLOps para monitorizacion continua</li>
+      <li>Comunicacion de resultados al board / equipo directivo</li>
+      <li>Inicio del segundo caso de uso</li>
+      <li>Establecimiento del centro de excelencia de IA</li>
+    </ul>
+    <div class="deliverable"><strong>Entregable:</strong> Solucion escalada en produccion, roadmap de IA actualizado, y modelo de gobernanza.</div>
+  </div>
+
+  <h2>Errores comunes en la implementacion</h2>
+  <ul>
+    <li><strong>Empezar por la tecnologia en vez del problema:</strong> Si no puedes explicar el problema de negocio en una frase, no empieces.</li>
+    <li><strong>Querer hacerlo todo internamente:</strong> Usa APIs y herramientas existentes. Construir desde cero rara vez tiene sentido en 2025.</li>
+    <li><strong>Ignorar la gestion del cambio:</strong> La tecnologia es la parte facil. Que la gente la adopte es el reto real.</li>
+    <li><strong>No medir desde el dia 1:</strong> Sin linea base, no puedes demostrar ROI. Punto.</li>
+  </ul>
+
+  <div class="cta-bar">
+    <h2>Plan completo con templates y calculadora</h2>
+    <p>El AI ROI Blueprint incluye este plan de 90 dias detallado con templates para cada entregable, la calculadora de ROI, y los 15 casos de uso por industria.</p>
+    <a href="/#precios" class="btn">Obtener el framework</a>
+  </div>
+
+  <div class="footer">
+    <a href="/blog">Blog</a>
+    <a href="/privacidad.html">Privacidad</a>
+    <a href="/terminos.html">Terminos</a>
+    <a href="/">Inicio</a>
+    <p>2025 AI ROI Blueprint. Todos los derechos reservados.</p>
+  </div>
+</div>
+</body>
+</html>
