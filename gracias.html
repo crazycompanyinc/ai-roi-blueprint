@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>¡Gracias! — AI ROI Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;510;590;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06060a;--bg2:#0c0c14;--surface:rgba(255,255,255,0.03);--surface2:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#e8eaed;--text2:#b0b8c4;--muted:#6b7280;--faint:#4a5060;--brand:#6366f1;--brand2:#818cf8;--brand-g:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#a78bfa 100%);--green:#34d399;--radius:8px;--radius-lg:14px;--radius-xl:20px;--radius-2xl:28px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;font-feature-settings:"cv01","ss03";background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+.wrap{max-width:720px;margin:0 auto;padding:100px 32px 80px}
+.success-hero{text-align:center;padding:40px 0 60px}
+.success-icon{width:80px;height:80px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 28px}
+.success-hero h1{font-size:clamp(32px,4vw,48px);font-weight:700;letter-spacing:-0.03em;margin-bottom:16px;color:var(--text)}
+.success-hero p{font-size:18px;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.7}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:40px;margin:20px 0}
+.card h3{font-size:20px;font-weight:600;margin-bottom:20px;letter-spacing:-0.01em;color:var(--text);display:flex;align-items:center;gap:10px}
+.steps{counter-reset:step}
+.step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{flex-shrink:0;width:32px;height:32px;background:var(--brand-g);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.step-content{flex:1}
+.step-content h4{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.step-content p{font-size:14px;color:var(--muted);line-height:1.6}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius);font-size:16px;font-weight:600;transition:all 0.3s;border:none;text-decoration:none}
+.btn-primary{background:var(--brand-g);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,102,241,0.35);color:#fff}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{background:var(--surface2)}
+.downloads{display:grid;gap:12px;margin:20px 0}
+.dl-item{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);transition:all 0.3s}
+.dl-item:hover{border-color:var(--border2)}
+.dl-info{display:flex;align-items:center;gap:12px}
+.dl-icon{font-size:24px}
+.dl-name{font-size:14px;font-weight:600;color:var(--text)}
+.dl-meta{font-size:12px;color:var(--faint)}
+.dl-btn{padding:8px 16px;font-size:13px}
+.email-note{margin-top:20px;padding:16px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:var(--radius-lg);text-align:center}
+.email-note p{font-size:14px;color:var(--text2);margin:0}
+.email-note strong{color:var(--text)}
+@media(max-width:600px){.wrap{padding:60px 20px 40px}.card{padding:28px}.dl-item{flex-direction:column;gap:12px;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="success-hero">
+    <div class="success-icon">🎉</div>
+    <h1>¡Bienvenido al Blueprint!</h1>
+    <p>Tu compra está completada. Aquí tienes acceso inmediato a todo el material.</p>
+  </div>
+
+  <div class="card">
+    <h3>📦 Descargas inmediatas</h3>
+    <div class="downloads">
+      <div class="dl-item">
+        <div class="dl-info">
+          <div class="dl-icon">📐</div>
+          <div>
+            <div class="dl-name">Framework ROI de IA — Guía completa</div>
+            <div class="dl-meta">HTML · 42 páginas · Print-ready</div>
+          </div>
+        </div>
+        <a href="/producto/framework-roi-ia.html" class="btn btn-primary dl-btn" download>Descargar</a>
+      </div>
+      <div class="dl-item">
+        <div class="dl-info">
+          <div class="dl-icon">📊</div>
+          <div>
+            <div class="dl-name">Calculadora ROI — Interactiva</div>
+            <div class="dl-meta">HTML · Fórmulas incluidas · 3 escenarios</div>
+          </div>
+        </div>
+        <a href="/producto/framework-roi-ia.html#calculadora" class="btn btn-primary dl-btn" download>Descargar</a>
+      </div>
+      <div class="dl-item">
+        <div class="dl-info">
+          <div class="dl-icon">🔍</div>
+          <div>
+            <div class="dl-name">Auditoría de Madurez IA — Checklist</div>
+            <div class="dl-meta">HTML · 50 puntos · 5 dimensiones</div>
+          </div>
+        </div>
+        <a href="/producto/framework-roi-ia.html#auditoria" class="btn btn-primary dl-btn" download>Descargar</a>
+      </div>
+      <div class="dl-item">
+        <div class="dl-info">
+          <div class="dl-icon">🎯</div>
+          <div>
+            <div class="dl-name">Playboard Ejecutivo — 12 slides</div>
+            <div class="dl-meta">HTML · Listo para el C-Suite</div>
+          </div>
+        </div>
+        <a href="/producto/framework-roi-ia.html#playboard" class="btn btn-primary dl-btn" download>Descargar</a>
+      </div>
+    </div>
+    <div class="email-note">
+      <p>📧 También hemos enviado un email a tu bandeja con los enlaces de acceso. Si no lo ves, revisa la carpeta de spam.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🚀 Tus próximos pasos</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Completa la auditoría de madurez</h4>
+          <p>Abre el Framework (Fase 1) y completa la auditoría de 5 dimensiones. Tómate 1-2 semanas para hacerlo bien — es la base de todo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Calcula tu ROI</h4>
+          <p>Usa la calculadora con tus datos reales. Calcula 3 escenarios: conservador, moderado y optimista.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Identifica quick wins</h4>
+          <p>Con la matriz de oportunidad, encuentra los 2-3 casos de uso con mayor ROI y menor esfuerzo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Presenta al C-Suite</h4>
+          <p>Usa el Playboard Ejecutivo con tus datos. Justifica la inversión con números, no con promesas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="text-align:center">
+    <h3>💬 ¿Preguntas?</h3>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:20px">Escríbenos a <strong style="color:var(--text)">hola@airoiblueprint.com</strong> — respondemos en menos de 24h.</p>
+    <a href="mailto:hola@airoiblueprint.com" class="btn btn-secondary">Enviar email</a>
+  </div>
+
+  <div style="text-align:center;margin-top:40px">
+    <a href="/" style="color:var(--muted);font-size:14px">← Volver a la landing</a>
+  </div>
+</div>
+</body>
+</html>

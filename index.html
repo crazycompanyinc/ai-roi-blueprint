@@ -2,532 +2,855 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI ROI Blueprint — Calcula el retorno real de IA en tu empresa</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;510;590&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<meta name="description" content="El framework completo para calcular, implementar y maximizar el retorno de inversión de IA en tu empresa. Incluye calculadora y plantillas listas para usar.">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI ROI Blueprint — El framework #1 para calcular retorno de IA empresarial</title>
+<meta name="description" content="Calcula, implementa y escala IA con números reales. Framework probado + calculadora financiera + plantillas ejecutivas. Más de 200 directivos confían en el método.">
+<link rel="canonical" href="https://ai-roi-blueprint.vercel.app">
 <!-- Open Graph -->
-<meta property="og:title" content="AI ROI Blueprint — Framework para calcular retorno de IA">
-<meta property="og:description" content="Calcula, implementa y escala IA con números reales. Blueprint + Calculadora + Plantillas.">
+<meta property="og:title" content="AI ROI Blueprint — Framework de ROI para IA Empresarial">
+<meta property="og:description" content="Calcula el retorno real de IA en tu empresa. Framework + Calculadora + Plantillas ejecutivas. Resultados en 90 días.">
+<meta property="og:url" content="https://ai-roi-blueprint.vercel.app">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI ROI Blueprint — ROI de IA con números reales">
+<!-- Preload fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;510;590;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#010102;--panel:#0f1011;--surface:#191a1b;--elevated:#28282c;--text:#f7f8f8;--text2:#d0d6e0;--muted:#8a8f98;--faint:#62666d;--brand:#5e6ad2;--accent:#7170ff;--hover:#828fff;--green:#10b981;--border:rgba(255,255,255,0.08);--border-light:rgba(255,255,255,0.04)}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;font-feature-settings:'cv01','ss03';background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}
-a:hover{color:var(--hover)}
-.wrap{max-width:1080px;margin:0 auto}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06060a;--bg2:#0c0c14;--surface:rgba(255,255,255,0.03);--surface2:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --text:#e8eaed;--text2:#b0b8c4;--muted:#6b7280;--faint:#4a5060;
+  --brand:#6366f1;--brand2:#818cf8;--brand-g:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#a78bfa 100%);
+  --green:#34d399;--green2:#6ee7b7;--amber:#fbbf24;--red:#f87171;
+  --radius:8px;--radius-lg:14px;--radius-xl:20px;--radius-2xl:28px;
+  --shadow:0 0.5px 0 0 var(--border),0 1px 2px rgba(0,0,0,0.4),0 8px 24px rgba(0,0,0,0.3);
+  --shadow-lg:0 0.5px 0 0 var(--border2),0 2px 4px rgba(0,0,0,0.5),0 16px 48px rgba(0,0,0,0.4);
+  --transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-feature-settings:"cv01","ss03";background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--brand2);text-decoration:none;transition:var(--transition)}
+a:hover{color:#c4b5fd}
+button{font-family:inherit;cursor:pointer}
+::selection{background:rgba(99,102,241,0.3);color:#fff}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,9,10,0.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
-.logo{font-weight:590;font-size:16px;color:var(--text);letter-spacing:-0.24px;display:flex;align-items:center;gap:8px}
-.logo em{width:8px;height:8px;background:var(--brand);border-radius:50%;display:inline-block}
-.nav-links{display:flex;align-items:center;gap:24px}
-.nav-links a{color:var(--muted);font-size:14px;font-weight:510;letter-spacing:-0.14px;transition:color .15s}
-.nav-links a:hover{color:var(--text)}
-.nav-btn{background:var(--brand);color:#fff;padding:6px 16px;border-radius:6px;font-size:14px;font-weight:510;border:none;cursor:pointer;transition:background .15s;text-decoration:none!important;color:#fff!important}
-.nav-btn:hover{background:var(--hover)}
-.burger{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
-@media(max-width:768px){.nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--panel);flex-direction:column;padding:16px 32px;gap:12px;border-bottom:1px solid var(--border)}.nav-links.show{display:flex}.burger{display:block}}
+/* ═══════════════ NAV ═══════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 max(32px,calc((100vw-1280px)/2));background:rgba(6,6,10,0.72);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);transition:var(--transition)}
+.nav.scrolled{height:64px;border-bottom-color:var(--border2);box-shadow:var(--shadow)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;color:var(--text);letter-spacing:-0.02em}
+.nav-logo .logo-mark{width:32px;height:32px;background:var(--brand-g);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.nav-logo span + span{color:var(--muted);font-weight:400;font-size:13px;display:none}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-links a:not(.btn){color:var(--text2);font-size:14px;font-weight:500;padding:6px 14px;border-radius:6px;transition:var(--transition);letter-spacing:-0.01em}
+.nav-links a:not(.btn):hover{color:var(--text);background:var(--surface)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--brand-g)!important;color:#fff!important;padding:8px 18px;border-radius:8px;font-size:14px;font-weight:600;transition:var(--transition);border:none}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(99,102,241,0.35);color:#fff!important}
+.nav-burger{display:none;background:none;border:none;color:var(--text);font-size:24px;padding:4px;cursor:pointer;line-height:1}
+@media(max-width:860px){
+  .nav-links{position:fixed;top:72px;left:0;right:0;background:var(--bg2);flex-direction:column;padding:16px;gap:4px;border-bottom:1px solid var(--border);transform:translateY(-100%);opacity:0;pointer-events:none;transition:var(--transition);z-index:99}
+  .nav-links.open{transform:translateY(0);opacity:1;pointer-events:all}
+  .nav-links a:not(.btn){width:100%;padding:12px 16px;font-size:15px;border-radius:8px}
+  .nav-burger{display:block}
+}
 
-/* HERRO */
-.hero{padding:160px 32px 100px;text-align:center}
-.hero .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(94,106,210,0.12);border:1px solid rgba(94,106,210,0.25);color:var(--accent);font-size:12px;font-weight:510;padding:4px 12px;border-radius:9999px;margin-bottom:32px}
-.hero h1{font-size:72px;font-weight:510;line-height:1.0;letter-spacing:-1.584px;max-width:800px;margin:0 auto 24px}
-.hero h1 em{color:var(--accent);font-style:normal}
-.hero .sub{font-size:18px;font-weight:400;color:var(--muted);line-height:1.6;max-width:560px;margin:0 auto 40px;letter-spacing:-.03em}
-.hero .acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{background:var(--brand);color:#fff;padding:12px 28px;border-radius:6px;font-size:16px;font-weight:510;border:none;cursor:pointer;transition:background .15s;text-decoration:none;display:inline-block}
-.btn:hover{background:var(--hover);color:#fff}
-.btn-g{background:rgba(255,255,255,0.04);color:var(--text2);padding:12px 28px;border-radius:6px;font-size:16px;font-weight:510;border:1px solid var(--border);cursor:pointer;transition:all .15s;text-decoration:none;display:inline-block}
-.btn-g:hover{background:rgba(255,255,255,0.08)}
-@media(max-width:768px){.hero h1{font-size:40px;letter-spacing:-.88px}.hero{padding:120px 20px 70px}}
+/* ═══════════════ HERO ═══════════════ */
+.hero{position:relative;padding:180px max(32px,calc((100vw-1280px)/2)) 120px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(ellipse,rgba(99,102,241,0.12) 0%,transparent 70%);pointer-events:none;z-index:0}
+.hero > *{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px 6px 8px;background:var(--surface);border:1px solid var(--border);border-radius:999px;font-size:13px;color:var(--text2);margin-bottom:36px;font-weight:500;backdrop-filter:blur(8px)}
+.hero-badge .dot{width:8px;height:8px;background:var(--green);border-radius:50%;margin-left:6px;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero h1{font-size:clamp(40px,6vw,80px);font-weight:700;line-height:1.05;letter-spacing:-0.04em;max-width:820px;margin:0 auto 28px;color:var(--text)}
+.hero h1 .grad{background:var(--brand-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .highlight{position:relative;display:inline-block}
+.hero h1 .highlight::after{content:"";position:absolute;bottom:4px;left:0;right:0;height:3px;background:var(--brand-g);border-radius:2px;opacity:0.6}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text2);max-width:600px;margin:0 auto 44px;line-height:1.7;font-weight:400}
+.hero-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:56px}
+.hero-trust{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;opacity:0.5}
+.hero-trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.hero-trust-item svg{flex-shrink:0}
 
-/* STATS */
-.stats{display:flex;justify-content:center;gap:64px;padding:60px 32px;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);flex-wrap:wrap}
-.stat{text-align:center}
-.stat .num{font-size:32px;font-weight:590;color:var(--text);letter-spacing:-.704px}
-.stat .lbl{font-size:13px;color:var(--muted);margin-top:4px}
+/* ═══════════════ BUTTONS ═══════════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:var(--radius);font-size:16px;font-weight:600;transition:var(--transition);border:none;letter-spacing:-0.01em;line-height:1.2}
+.btn svg{flex-shrink:0}
+.btn-primary{background:var(--brand-g);color:#fff;box-shadow:0 2px 12px rgba(99,102,241,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,102,241,0.4);color:#fff}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{background:var(--surface2);border-color:var(--border2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text2);padding:10px 20px;font-size:14px}
+.btn-ghost:hover{color:var(--text)}
+.btn-lg{padding:18px 36px;font-size:18px;border-radius:var(--radius-lg)}
+.btn-sm{padding:8px 16px;font-size:13px}
+.btn:disabled{opacity:0.5;cursor:not-allowed;transform:none!important}
 
-/* SECTIONS */
-.sec{padding:100px 32px}
-.sec-label{font-size:12px;font-weight:510;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
-.sec-title{font-size:48px;font-weight:510;line-height:1.0;letter-spacing:-1.056px;margin-bottom:16px;color:var(--text)}
-.sec-desc{font-size:18px;color:var(--muted);max-width:560px;line-height:1.6;letter-spacing:-.03em;margin-bottom:48px}
-@media(max-width:768px){.sec{padding:64px 20px}.sec-title{font-size:32px;letter-spacing:-.704px}}
+/* ═══════════════ SECTIONS ═══════════════ */
+.sec{position:relative;padding:120px max(32px,calc((100vw-1280px)/2))}
+.sec-inner{max-width:1120px;margin:0 auto}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--brand2);margin-bottom:20px}
+.sec-label::before{content:"";display:block;width:8px;height:8px;background:var(--brand);border-radius:2px}
+.sec-title{font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;margin-bottom:18px;color:var(--text)}
+.sec-desc{font-size:clamp(16px,1.5vw,19px);color:var(--text2);max-width:580px;line-height:1.7;margin-bottom:56px}
+.sec-desc a{color:var(--brand2);text-decoration:underline;text-underline-offset:3px}
+.sec-center{text-align:center}
+.sec-center .sec-desc{margin-left:auto;margin-right:auto}
+.bg-alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 
-/* PROBLEM */
-.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
-.prob{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:32px}
-.prob .ico{font-size:28px;margin-bottom:16px}
-.prob h3{font-size:18px;font-weight:590;color:var(--text);margin-bottom:8px;letter-spacing:-.18px}
-.prob p{font-size:14px;color:var(--muted);line-height:1.6}
-@media(max-width:900px){.prob-grid{grid-template-columns:1fr}}
+/* ═══════════════ STATS ═══════════════ */
+.stats-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:48px 0;border-top:1px solid var(--border);margin-top:56px}
+.stat-item{text-align:center}
+.stat-num{font-size:clamp(32px,4vw,48px);font-weight:700;color:var(--text);letter-spacing:-0.03em;line-height:1.1;margin-bottom:6px}
+.stat-num .accent{background:var(--brand-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:14px;color:var(--muted);font-weight:500}
+@media(max-width:768px){.stats-wrap{grid-template-columns:repeat(2,1fr);gap:24px;padding:32px 0}}
 
-/* FEATURES */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.feat{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px;transition:background .2s}
-.feat:hover{background:rgba(255,255,255,0.04)}
-.feat .num{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--faint);margin-bottom:16px;background:rgba(255,255,255,0.03);padding:2px 8px;border-radius:4px;display:inline-block}
-.feat h3{font-size:20px;font-weight:590;color:var(--text);margin-bottom:8px;letter-spacing:-.24px}
-.feat p{font-size:14px;color:var(--muted);line-height:1.7}
-.feat .tag{display:inline-block;margin-top:16px;font-size:11px;font-weight:510;color:var(--accent);background:rgba(94,106,210,0.1);padding:2px 8px;border-radius:4px}
-@media(max-width:900px){.feat-grid{grid-template-columns:1fr}}
+/* ═══════════════ PROBLEM ═══════════════ */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.problem-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 32px;transition:var(--transition);position:relative;overflow:hidden}
+.problem-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(239,68,68,0.3),transparent);opacity:0;transition:var(--transition)}
+.problem-card:hover::before{opacity:1}
+.problem-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.problem-icon{width:48px;height:48px;background:rgba(239,68,68,0.08);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.problem-card h3{font-size:19px;font-weight:600;color:var(--text2);margin-bottom:8px;letter-spacing:-0.01em}
+.problem-card p{font-size:14px;color:var(--muted);line-height:1.7}
+@media(max-width:900px){.problem-grid{grid-template-columns:1fr}}
 
-/* CALC */
-.calc{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:48px;max-width:720px;margin:0 auto}
-.calc h3{font-size:24px;font-weight:590;letter-spacing:-.288px;margin-bottom:32px}
+/* ═══════════════ FEATURES ═══════════════ */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 32px;transition:var(--transition);position:relative;overflow:hidden}
+.feature-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--brand-g);opacity:0;transition:var(--transition)}
+.feature-card:hover::before{opacity:1}
+.feature-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.feature-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--brand2);margin-bottom:20px;letter-spacing:1px}
+.feature-icon{width:44px;height:44px;background:rgba(99,102,241,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;transition:var(--transition)}
+.feature-card:hover .feature-icon{background:rgba(99,102,241,0.15);transform:scale(1.05)}
+.feature-card h3{font-size:18px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;color:var(--text)}
+.feature-card p{font-size:14px;color:var(--muted);line-height:1.75}
+.feature-tag{display:inline-block;margin-top:16px;font-size:11px;font-weight:600;color:var(--brand2);padding:4px 10px;background:rgba(99,102,241,0.1);border-radius:4px;letter-spacing:0.5px}
+@media(max-width:900px){.features-grid{grid-template-columns:1fr}}
+@media(min-width:901px) and (max-width:1100px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ═══════════════ HOW IT WORKS ═══════════════ */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.steps-grid::before{content:"";position:absolute;top:40px;left:calc(16.66%);right:calc(16.66%);height:2px;background:linear-gradient(90deg,var(--brand),rgba(139,92,240,0.5));opacity:0.2}
+.step-card{text-align:center;padding:32px 24px;position:relative}
+.step-num{width:44px;height:44px;background:var(--bg);border:2px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--brand2);margin:0 auto 20px;position:relative;z-index:1;transition:var(--transition)}
+.step-card:hover .step-num{border-color:var(--brand);background:rgba(99,102,241,0.1)}
+.step-card h3{font-size:17px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.step-card p{font-size:14px;color:var(--muted);line-height:1.7}
+@media(max-width:768px){.steps-grid::before{display:none}.steps-grid{grid-template-columns:1fr}}
+
+/* ═══════════════ CALCULATOR ═══════════════ */
+.calc-wrap{max-width:680px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-2xl);padding:44px;position:relative;overflow:hidden}
+.calc-wrap::after{content:"";content:"";position:absolute;top:-2px;left:50%;transform:translateX(-50%);width:60%;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent)}
 .calc-row{margin-bottom:24px}
-.calc-row label{display:block;font-size:13px;color:var(--text2);font-weight:510;margin-bottom:8px}
-.calc-row input,.calc-row select{width:100%;padding:12px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .15s}
-.calc-row input:focus{border-color:var(--brand)}
-.calc-res{margin-top:32px;padding:24px;background:rgba(94,106,210,0.08);border:1px solid rgba(94,106,210,0.2);border-radius:12px;text-align:center}
-.calc-res .big{font-size:48px;font-weight:590;color:var(--accent);letter-spacing:-1.056px;line-height:1}
-.calc-res .sm{font-size:13px;color:var(--muted);margin-top:8px}
+.calc-row:last-of-type{margin-bottom:0}
+.calc-row label{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:8px;letter-spacing:-0.01em}
+.calc-row input,.calc-row select{width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:var(--transition);-webkit-appearance:none;appearance:none}
+.calc-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.calc-row input:focus,.calc-row select:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(99,102,241,0.15)}
+.calc-row input::placeholder{color:var(--faint)}
+.calc-btn{width:100%;padding:16px;background:var(--brand-g);color:#fff;border:none;border-radius:var(--radius);font-size:16px;font-weight:600;transition:var(--transition);letter-spacing:-0.01em}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,102,241,0.35)}
+.calc-result{margin-top:28px;padding:28px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:var(--radius-lg);text-align:center;display:none}
+.calc-result.show{display:block;animation:fadeInUp 0.4s ease}
+.calc-result .roi-big{font-size:52px;font-weight:700;background:var(--brand-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:8px}
+.calc-result .roi-detail{font-size:14px;color:var(--text2)}
+.calc-disclaimer{margin-top:16px;font-size:11px;color:var(--faint);text-align:center;line-height:1.6}
 
-/* PRICING */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.price{background:var(--panel);border:1px solid var(--border);border-radius:22px;padding:40px 32px;text-align:center;position:relative;transition:border-color .2s}
-.price.pop{border-color:var(--brand)}
-.price.pop::before{content:'Más popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--brand);color:#fff;font-size:11px;font-weight:510;padding:2px 12px;border-radius:9999px}
-.price h3{font-size:20px;font-weight:590;letter-spacing:-.24px;margin-bottom:12px}
-.price .amt{font-size:48px;font-weight:510;letter-spacing:-1.056px;color:var(--text);margin-bottom:8px}
-.price .amt .cur{font-size:20px;vertical-align:super}
-.price .amt .per{font-size:14px;color:var(--muted);font-weight:400}
-.price ul{list-style:none;margin:24px 0;text-align:left}
-.price ul li{font-size:14px;color:var(--text2);padding:8px 0;display:flex;align-items:flex-start;gap:8px}
-.price ul li::before{content:'→';color:var(--accent);font-size:12px;flex-shrink:0}
-.price .btn{width:100%}
-@media(max-width:900px){.price-grid{grid-template-columns:1fr}}
+/* ═══════════════ PRICING ═══════════════ */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-2xl);padding:44px 36px;text-align:center;position:relative;transition:var(--transition);display:flex;flex-direction:column}
+.price-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.price-card.featured{border-color:var(--brand);background:linear-gradient(180deg,rgba(99,102,241,0.06) 0%,var(--surface) 100%)}
+.price-card.featured::before{content:"Más popular";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brand-g);color:#fff;font-size:11px;font-weight:600;padding:4px 16px;border-radius:999px;letter-spacing:0.5px;white-space:nowrap}
+.price-card.badge-new::after{content:"Recomendado";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--green);color:#06060a;font-size:11px;font-weight:600;padding:4px 16px;border-radius:999px;letter-spacing:0.5px}
+.price-label{font-size:13px;font-weight:600;color:var(--brand2);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.price-card h3{font-size:24px;font-weight:700;margin-bottom:8px;letter-spacing:-0.02em;color:var(--text)}
+.price-amount{font-size:52px;font-weight:700;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:8px}
+.price-amount .currency{font-size:24px;vertical-align:super;font-weight:600}
+.price-amount .period{font-size:14px;color:var(--muted);font-weight:400;margin-left:4px}
+.price-sub{font-size:14px;color:var(--muted);margin-bottom:32px}
+.price-features{list-style:none;text-align:left;margin:0 0 36px;padding:0;flex:1}
+.price-features li{padding:10px 0;font-size:14px;color:var(--text2);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--border)}
+.price-features li:last-child{border-bottom:none}
+.price-features li::before{content:"✓";color:var(--green);font-weight:700;font-size:13px;flex-shrink:0;margin-top:2px}
+.price-features li.feature-no{color:var(--faint);text-decoration:line-through}
+.price-features li.feature-no::before{content:"×";color:var(--faint)}
+.price-card .btn{margin-top:auto}
+@media(max-width:960px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}}
 
-/* TESTIMONIAL */
-.testi{background:rgba(255,255,255,0.01);border:1px solid var(--border);border-radius:22px;padding:48px;max-width:720px;margin:48px auto 0;text-align:center}
-.testi .quote{font-size:22px;font-weight:400;color:var(--text);line-height:1.6;margin-bottom:24px;font-style:italic;letter-spacing:-.22px}
-.testi .who{font-size:14px;font-weight:590;color:var(--text2)}
-.testi .role{font-size:12px;color:var(--faint);margin-top:2px}
+/* ═══════════════ TESTIMONIALS ═══════════════ */
+.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px}
+.testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px}
+.testi-stars{color:var(--amber);font-size:16px;margin-bottom:16px;letter-spacing:2px}
+.testi-text{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:24px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;background:var(--brand-g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:600;color:var(--text)}
+.testi-role{font-size:12px;color:var(--muted)}
+@media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
 
-/* FAQ */
-.faq{border-bottom:1px solid var(--border-light);padding:24px 0}
-.faq-q{font-size:16px;font-weight:590;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.16px}
-.faq-q::after{content:'+';color:var(--muted);font-size:20px;font-weight:300}
-.faq-q.open::after{content:'−'}
-.faq-a{font-size:14px;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
-.faq-a.open{max-height:300px;padding-top:12px}
+/* ═══════════════ FAQ ═══════════════ */
+.faq-wrap{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:24px 0;background:none;border:none;color:var(--text);font-family:inherit;font-size:17px;font-weight:600;text-align:left;cursor:pointer;gap:16px;letter-spacing:-0.01em}
+.faq-q:hover{color:var(--brand2)}
+.faq-q::after{content:"+";font-size:22px;font-weight:300;color:var(--muted);flex-shrink:0;transition:transform 0.3s}
+.faq-q.open::after{transform:rotate(45deg);color:var(--brand2)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1),padding 0.4s;color:var(--muted);font-size:15px;line-height:1.8}
+.faq-a.open{max-height:400px;padding-bottom:24px}
 
-/* EMAIL */
-.email-sec{padding:80px 32px;text-align:center;max-width:480px;margin:0 auto}
-.email-sec h3{font-size:32px;font-weight:510;letter-spacing:-.704px;margin-bottom:12px}
-.email-sec p{color:var(--muted);font-size:15px;margin-bottom:32px}
-.email-f{display:flex;gap:8px}
-.email-f input{flex:1;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none}
-.email-f input:focus{border-color:var(--brand)}
-@media(max-width:600px){.email-f{flex-direction:column}}
+/* ═══════════════ CTA ═══════════════ */
+.cta-section{text-align:center;padding:140px max(32px,calc((100vw-1280px)/2));position:relative;overflow:hidden}
+.cta-section::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:120%;height:100%;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(99,102,241,0.1) 0%,transparent 70%);pointer-events:none}
+.cta-section > *{position:relative;z-index:1}
+.cta-section h2{font-size:clamp(36px,4vw,52px);font-weight:700;letter-spacing:-0.03em;margin-bottom:20px;color:var(--text)}
+.cta-section p{font-size:clamp(17px,1.5vw,20px);color:var(--text2);max-width:520px;margin:0 auto 44px;line-height:1.7}
+.cta-guarantee{margin-top:24px;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px}
 
-/* FINAL CTA */
-.final{padding:120px 32px;text-align:center;border-top:1px solid var(--border-light)}
-.final h2{font-size:48px;font-weight:510;letter-spacing:-1.056px;margin-bottom:16px}
-.final p{font-size:18px;color:var(--muted);max-width:480px;margin:0 auto 40px;letter-spacing:-.03em}
+/* ═══════════════ EMAIL ═══════════════ */
+.email-section{text-align:center;max-width:480px;margin:0 auto}
+.email-section h3{font-size:36px;font-weight:700;letter-spacing:-0.03em;margin-bottom:16px;color:var(--text)}
+.email-section p{color:var(--muted);font-size:16px;margin-bottom:32px;line-height:1.7}
+.email-form{display:flex;gap:10px}
+.email-form input{flex:1;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:var(--transition)}
+.email-form input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(99,102,241,0.15)}
+.email-form input::placeholder{color:var(--faint)}
+@media(max-width:600px){.email-form{flex-direction:column}.email-form .btn{width:100%}}
 
-/* FOOTER */
-footer{padding:40px 32px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-footer .brand{font-size:14px;font-weight:590;color:var(--faint)}
-footer .flinks{display:flex;gap:20px}
-footer .flinks a{font-size:13px;color:var(--faint)}
-footer .flinks a:hover{color:var(--text)}
+/* ═══════════════ FOOTER ═══════════════ */
+.footer{padding:48px max(32px,calc((100vw-1280px)/2));border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;color:var(--muted);font-size:14px}
+.footer a{color:var(--muted);transition:var(--transition)}
+.footer a:hover{color:var(--text)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
 
-/* REVEAL */
-[data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
-[data-reveal].vis{opacity:1;transform:translateY(0)}
+/* ═══════════════ CONTACT FORM ═══════════════ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.contact-info h3{font-size:32px;font-weight:700;letter-spacing:-0.03em;margin-bottom:16px;color:var(--text)}
+.contact-info p{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:24px}
+.contact-detail{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:14px;color:var(--text2)}
+.contact-detail-icon{flex-shrink:0;margin-top:2px}
+.contact-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-2xl);padding:40px}
+.contact-form .calc-row:last-of-type{margin-bottom:0}
+.contact-form textarea{width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;min-height:120px;resize:vertical;transition:var(--transition)}
+.contact-form textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(99,102,241,0.15)}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}.contact-form{padding:28px}}
 
-/* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid rgba(16,185,129,0.3);border-left:3px solid var(--green);padding:16px 24px;border-radius:6px;font-size:14px;color:var(--text2);z-index:200;transition:transform .3s,opacity .3s;transform:translateY(20px);opacity:0;pointer-events:none}
+/* ═══════════════ TOAST ═══════════════ */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--surface2);border:1px solid rgba(52,211,153,0.25);border-left:3px solid var(--green);padding:16px 24px;border-radius:var(--radius);font-size:14px;color:var(--text2);z-index:200;transform:translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);pointer-events:none;max-width:360px;line-height:1.5;backdrop-filter:blur(12px)}
 .toast.show{transform:translateY(0);opacity:1}
+.toast.error{border-left-color:var(--red);border-color:rgba(248,113,113,0.25)}
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+[data-reveal]{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+[data-reveal].visible{opacity:1;transform:translateY(0)}
+[data-reveal="delay-1"]{transition-delay:0.1s}
+[data-reveal="delay-2"]{transition-delay:0.2s}
+[data-reveal="delay-3"]{transition-delay:0.3s}
+[data-reveal="delay-4"]{transition-delay:0.4s}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* Counter animation */
+.stat-num .count{display:inline-block}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media(max-width:640px){
+  .sec{padding:80px 20px}
+  .hero{padding:140px 20px 80px}
+  .hero-badge{font-size:12px}
+  .hero-acts{flex-direction:column;align-items:center}
+  .hero-trust{gap:20px}
+  .calc-wrap{padding:28px}
+  .cta-section{padding:100px 20px}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo"><em></em> AI ROI Blueprint</div>
-  <button class="burger" id="burger" aria-label="Menu">☰</button>
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">A</div>
+    AI ROI Blueprint
+  </a>
+  <button class="nav-burger" id="navBurger" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   <div class="nav-links" id="navLinks">
     <a href="#problema">Problema</a>
-    <a href="#incluye">Incluye</a>
+    <a href="#solucion">Incluye</a>
     <a href="#calculadora">Calculadora</a>
     <a href="#precios">Precios</a>
     <a href="#faq">FAQ</a>
-    <a href="#precios" class="nav-btn">Obtener blueprint →</a>
+    <a href="https://buy.stripe.com/bJe3cu72ycti2FYagegA80c" class="nav-cta" target="_blank" rel="noopener">Obtener blueprint →</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero" data-reveal>
-  <div class="badge">⚡ Nuevo — Framework 2025</div>
-  <h1>Calcula el <em>retorno real</em> de IA en tu empresa</h1>
-  <p class="sub">El blueprint definitivo para directivos y equipos que necesitan justificar, implementar y escalar inteligencia artificial con números reales — no promesas vacías.</p>
-  <div class="acts">
-    <a href="https://buy.stripe.com/bJe3cu72ycti2FYagegA80c" class="btn" target="_blank" rel="noopener">Obtener el blueprint — €97</a>
-    <a href="#calculadora" class="btn-g">Probar calculadora gratis</a>
+<!-- ═══ HERO ═══ -->
+<section class="hero" data-reveal>
+  <div class="hero-badge"><span class="dot"></span> Framework 2025 — Actualizado con casos reales</div>
+  <h1>Calcula el <span class="grad">retorno real</span> de IA en tu empresa</h1>
+  <p class="hero-sub">El framework definitivo para directivos que necesitan justificar, implementar y escalar inteligencia artificial con números reales — no promesas vacías.</p>
+  <div class="hero-acts">
+    <a href="https://buy.stripe.com/bJe3cu72ycti2FYagegA80c" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+      Obtener el blueprint — €97
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+    <a href="#calculadora" class="btn btn-secondary btn-lg">Probar calculadora gratis</a>
+  </div>
+  <div class="hero-trust">
+    <div class="hero-trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 1l2.2 4.5 5 .7-3.6 3.5.8 5L8 12.4 3.6 14.7l.8-5L.8 6.2l5-.7z"/></svg>
+      Garantía 14 días
+    </div>
+    <div class="hero-trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+      Pago seguro Stripe
+    </div>
+    <div class="hero-trust-item">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
+      Acceso inmediato
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="sec" style="padding-top:0">
+  <div class="sec-inner">
+    <div class="stats-wrap" data-reveal>
+      <div class="stat-item">
+        <div class="stat-num"><span class="accent count" data-target="340">0</span>%</div>
+        <div class="stat-label">ROI promedio en 12 meses</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="accent count" data-target="2.4">0</span>h</div>
+        <div class="stat-label">Ahorro semanal por empleado</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="accent count" data-target="67">0</span>%</div>
+        <div class="stat-label">Empresas sin framework de IA</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><span class="accent count" data-target="90">0</span>d</div>
+        <div class="stat-label">Para primeros resultados</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats" data-reveal>
-  <div class="stat"><div class="num">340%</div><div class="lbl">ROI promedio en 12 meses</div></div>
-  <div class="stat"><div class="num">2.4h</div><div class="lbl">Ahorro semanal por empleado</div></div>
-  <div class="stat"><div class="num">67%</div><div class="lbl">Empresas sin framework de IA</div></div>
-</div>
-
-<!-- PROBLEMA -->
-<section class="sec wrap" id="problema" data-reveal>
-  <div class="sec-label">El problema</div>
-  <h2 class="sec-title">Invertir en IA a ciegas es caro</h2>
-  <p class="sec-desc">El 67% de las empresas que implementan IA no miden retorno. Gastan, esperan, y cuando no ven resultados claros — recortan.</p>
-  <div class="prob-grid">
-    <div class="prob">
-      <div class="ico">🎯</div>
-      <h3>Sin métricas claras</h3>
-      <p>Invierten en herramientas sin definir qué éxito medir. No hay baseline, no hay comparación, no hay forma de saber si funciona.</p>
-    </div>
-    <div class="prob">
-      <div class="ico">💸</div>
-      <h3>Budget desperdiciado</h3>
-      <p>Entre licencias, consultoría y tiempo interno, el coste de implementación sin rumbo supera los €50K en el primer año promedio.</p>
-    </div>
-    <div class="prob">
-      <div class="ico">🔄</div>
-      <h3>Inercia organizacional</h3>
-      <p>Sin framework, cada equipo hace lo suyo. No hay gobernanza, no hay escala, no hay aprendizaje transversal.</p>
+<!-- ═══ PROBLEMA ═══ -->
+<section class="sec bg-alt" id="problema">
+  <div class="sec-inner">
+    <div class="sec-label" data-reveal>El problema</div>
+    <h2 class="sec-title" data-reveal>Invertir en IA a ciegas es <span style="color:var(--red)">caro</span></h2>
+    <p class="sec-desc" data-reveal>El 67% de las empresas que implementan IA no miden retorno. Gastan, esperan, y cuando no ven resultados claros — recortan presupuesto y pierden la inversión.</p>
+    <div class="problem-grid">
+      <div class="problem-card" data-reveal="delay-1">
+        <div class="problem-icon">🎯</div>
+        <h3>Sin métricas claras</h3>
+        <p>Invierten en herramientas sin definir qué éxito medir. No hay baseline, no hay comparación, no hay forma de saber si funciona o si es humo.</p>
+      </div>
+      <div class="problem-card" data-reveal="delay-2">
+        <div class="problem-icon">💸</div>
+        <h3>Budget desperdiciado</h3>
+        <p>Entre licencias, consultoría y tiempo interno, el coste de implementación sin rumbo supera los €50K en el primer año. Sin retorno que lo justifique.</p>
+      </div>
+      <div class="problem-card" data-reveal="delay-3">
+        <div class="problem-icon">🔄</div>
+        <h3>Inercia organizacional</h3>
+        <p>Sin framework, cada equipo hace lo suyo. No hay gobernanza, no hay escala, no hay aprendizaje transversal. La IA se queda en pilotos que mueren.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- INCLUYE -->
-<section class="sec wrap" id="incluye" data-reveal>
-  <div class="sec-label">Qué incluye</div>
-  <h2 class="sec-title">Todo lo que necesitas para medir y escalar</h2>
-  <p class="sec-desc">Un sistema completo: framework + calculadora + plantillas + playbook de implementación.</p>
-  <div class="feat-grid">
-    <div class="feat">
-      <div class="num">01 — Framework</div>
-      <h3>Framework ROI de IA</h3>
-      <p>Metodología paso a paso para calcular el retorno de cualquier iniciativa de IA — desde automatización hasta modelos generativos.</p>
-      <span class="tag">42 páginas</span>
-    </div>
-    <div class="feat">
-      <div class="num">02 — Calculadora</div>
-      <h3>Calculadora Financiera</h3>
-      <p>Spreadsheet con fórmulas pre-configuradas. Introduce tus datos y obtén proyecciones de ROI a 6, 12 y 24 meses.</p>
-      <span class="tag">Plantilla lista</span>
-    </div>
-    <div class="feat">
-      <div class="num">03 — Auditoría</div>
-      <h3>Auditoría de Madurez IA</h3>
-      <p>Checklist de 50 puntos para evaluar dónde está tu empresa hoy — datos, procesos, talento, infraestructura y cultura.</p>
-      <span class="tag">PDF interactivo</span>
-    </div>
-    <div class="feat">
-      <div class="num">04 — Presentación</div>
-      <h3>Playboard Ejecutivo</h3>
-      <p>Presentación lista para el C-Suite. Justifica la inversión con datos, casos de uso priorizados y roadmap de 90 días.</p>
-      <span class="tag">12 slides</span>
-    </div>
-    <div class="feat">
-      <div class="num">05 — Casos de uso</div>
-      <h3>15 Casos de Uso Priorizados</h3>
-      <p>Los 15 casos de uso de IA con mayor ROI por industria: servicios, retail, manufacturing, salud y fintech.</p>
-      <span class="tag">Por sector</span>
-    </div>
-    <div class="feat">
-      <div class="num">06 — Gobernanza</div>
-      <h3>Gobernanza y Escala</h3>
-      <p>Políticas de uso responsable, framework de evaluación de proveedores y proceso para escalar de piloto a producción.</p>
-      <span class="tag">Checklists</span>
-    </div>
-  </div>
-</section>
-
-<!-- CALCULADORA -->
-<section class="sec wrap" id="calculadora" data-reveal>
-  <div class="sec-label">Calculadora</div>
-  <h2 class="sec-title">Calcula tu ROI ahora</h2>
-  <p class="sec-desc">Obtén una estimación instantánea del retorno potencial de IA en tu organización.</p>
-  <div class="calc">
-    <h3>📊 Calculadora de ROI — IA</h3>
-    <div class="calc-row">
-      <label>Número de empleados</label>
-      <input type="number" id="emps" min="1" value="50" placeholder="Ej: 50">
-    </div>
-    <div class="calc-row">
-      <label>Coste medio por empleado (€/hora)</label>
-      <input type="number" id="cost" min="1" value="35" placeholder="Ej: 35">
-    </div>
-    <div class="calc-row">
-      <label>Horas semanales automatizables con IA</label>
-      <select id="hours">
-        <option value="2">2 horas (conservador)</option>
-        <option value="4" selected>4 horas (moderado)</option>
-        <option value="8">8 horas (optimista)</option>
-        <option value="12">12 horas (+ automatización profunda)</option>
-      </select>
-    </div>
-    <div class="calc-row">
-      <label>Coste estimado de implementación IA (€/año)</label>
-      <input type="number" id="impl" min="0" value="15000" placeholder="Ej: 15000">
-    </div>
-    <button class="btn" onclick="calcROI()" style="width:100%;margin-top:8px">Calcular ROI →</button>
-    <div class="calc-res" id="calcRes" style="display:none">
-      <div class="big" id="roiVal">—</div>
-      <div class="sm" id="roiLbl"></div>
-    </div>
-    <p style="font-size:12px;color:var(--faint);margin-top:16px;text-align:center">* Estimación basada en promedios del sector. Los resultados reales dependerán de la implementación específica.</p>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="sec wrap" id="precios" data-reveal>
-  <div class="sec-label">Precios</div>
-  <h2 class="sec-title">Elige tu plan</h2>
-  <p class="sec-desc">Una sola pago. Acceso de por vida. Actualizaciones incluidas.</p>
-  <div class="price-grid">
-    <div class="price">
-      <h3>Starter</h3>
-      <div class="amt"><span class="cur">€</span>47<span class="per">pago único</span></div>
-      <ul>
-        <li>Framework ROI de IA (42 págs)</li>
-        <li>Calculadora financiera</li>
-        <li>15 casos de uso por sector</li>
-        <li>Actualizaciones por email</li>
-      </ul>
-      <a href="https://buy.stripe.com/4gMeVc5Yu1OE2FYgECgA80b" class="btn" id="starterBtn" target="_blank" rel="noopener">Obtener Starter</a>
-    </div>
-    <div class="price pop">
-      <h3>Professional</h3>
-      <div class="amt"><span class="cur">€</span>97<span class="per">pago único</span></div>
-      <ul>
-        <li><strong>Todo lo de Starter</strong></li>
-        <li>Auditoría de Madurez IA (50 pts)</li>
-        <li>Playboard Ejecutivo (12 slides)</li>
-        <li>Framework de Gobernanza</li>
-        <li>Plantillas de comunicación interna</li>
-        <li>Grupo privado de Slack</li>
-      </ul>
-      <a href="https://buy.stripe.com/bJe3cu72ycti2FYagegA80c" class="btn" id="proBtn" target="_blank" rel="noopener">Obtener Professional →</a>
-    </div>
-    <div class="price">
-      <h3>Enterprise</h3>
-      <div class="amt">Custom<span class="per">contactar</span></div>
-      <ul>
-        <li><strong>Todo lo de Professional</strong></li>
-        <li>Sesión 1:1 estratégica (60 min)</li>
-        <li>Personalización por industria</li>
-        <li>Licencia para equipo (hasta 10)</li>
-        <li>Workshop on-site remoto</li>
-        <li>Soporte prioritario</li>
-      </ul>
-      <a href="#contacto" class="btn-g">Contactar ventas</a>
+<!-- ═══ SOLUCIÓN ═══ -->
+<section class="sec" id="solucion">
+  <div class="sec-inner">
+    <div class="sec-label" data-reveal>La solución</div>
+    <h2 class="sec-title" data-reveal>Un sistema completo para medir, implementar y escalar</h2>
+    <p class="sec-desc" data-reveal>No es un curso. No es consultoría. Es un framework probado con herramientas listas para usar desde hoy.</p>
+    <div class="features-grid">
+      <div class="feature-card" data-reveal="delay-1">
+        <div class="feature-num">01</div>
+        <div class="feature-icon">📐</div>
+        <h3>Framework ROI de IA</h3>
+        <p>Metodología de 6 fases para calcular el retorno de cualquier iniciativa de IA — desde automatización básica hasta modelos generativos avanzados.</p>
+        <span class="feature-tag">42 páginas · Print-ready</span>
+      </div>
+      <div class="feature-card" data-reveal="delay-2">
+        <div class="feature-num">02</div>
+        <div class="feature-icon">📊</div>
+        <h3>Calculadora Financiera</h3>
+        <p>Plantilla interactiva con fórmulas pre-configuradas. Introduce tus datos y obtén proyecciones de ROI a 6, 12 y 24 meses con 3 escenarios.</p>
+        <span class="feature-tag">HTML interactivo</span>
+      </div>
+      <div class="feature-card" data-reveal="delay-3">
+        <div class="feature-num">03</div>
+        <div class="feature-icon">🔍</div>
+        <h3>Auditoría de Madurez IA</h3>
+        <p>Checklist de 50 puntos en 5 dimensiones: datos, procesos, talento, infraestructura y cultura. Evalúa dónde está tu empresa hoy.</p>
+        <span class="feature-tag">PDF interactivo</span>
+      </div>
+      <div class="feature-card" data-reveal="delay-1">
+        <div class="feature-num">04</div>
+        <div class="feature-icon">🎯</div>
+        <h3>Playboard Ejecutivo</h3>
+        <p>Presentación lista para el C-Suite. Justifica la inversión con datos, casos de uso priorizados y roadmap de 90 días.</p>
+        <span class="feature-tag">12 slides · Editables</span>
+      </div>
+      <div class="feature-card" data-reveal="delay-2">
+        <div class="feature-num">05</div>
+        <div class="feature-icon">🏭</div>
+        <h3>15 Casos de Uso por Industria</h3>
+        <p>Los casos de uso de IA con mayor ROI segmentados por sector: servicios, retail, manufacturing, salud y fintech.</p>
+        <span class="feature-tag">Priorizados por impacto</span>
+      </div>
+      <div class="feature-card" data-reveal="delay-3">
+        <div class="feature-num">06</div>
+        <div class="feature-icon">⚖️</div>
+        <h3>Gobernanza y Escala</h3>
+        <p>Políticas de uso responsable, framework de evaluación de proveedores y proceso iterativo para escalar de piloto a producción.</p>
+        <span class="feature-tag">Checklists incluidos</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="sec wrap" data-reveal>
-  <div class="sec-label">Impacto</div>
-  <h2 class="sec-title">Lo que dicen los primeros usuarios</h2>
-  <div class="testi">
-    <div class="quote">"Presentamos el Playboard Ejecutivo al Comité de Dirección y aprobaron nuestro presupuesto de IA en una reunión. El framework nos dio la estructura que nos faltaba."</div>
-    <div class="who">Directora de Transformación Digital</div>
-    <div class="role">Empresa de servicios profesionales, 800+ empleados</div>
-  </div>
-  <div class="testi" style="margin-top:24px">
-    <div class="quote">"La calculadora sola ya valió la pena. Pudimos demostrar que el ROI de automatizar reporting era de 480% en 8 meses. Ahora lo usamos para todo."</div>
-    <div class="who">VP of Operations</div>
-    <div class="role">E-commerce, 200+ empleados</div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="sec wrap" id="faq" data-reveal>
-  <div class="sec-label">FAQ</div>
-  <h2 class="sec-title">Preguntas frecuentes</h2>
-  <div class="faq-wrap" style="margin-top:32px">
-    <div class="faq">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Esto es un curso o un framework?</div>
-      <div class="faq-a">Es un framework práctico con herramientas listas para usar. No hay vídeos ni clases. Recibes documentos, plantillas y una calculadora que puedes usar inmediatamente en tu organización.</div>
-    </div>
-    <div class="faq">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Funciona para empresas pequeñas?</div>
-      <div class="faq-a">Sí. El framework escala desde equipos de 5 personas hasta organizaciones de miles. La calculadora se adapta a cualquier tamaño y los casos de uso están segmentados por escala.</div>
-    </div>
-    <div class="faq">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Qué experiencia previa necesito?</div>
-      <div class="faq-a">Ninguna en IA técnica. Está diseñado para directivos, PMs, consultores y profesionales de operaciones que necesitan justificar y liderar iniciativas de IA.</div>
-    </div>
-    <div class="faq">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Hay reembolso?</div>
-      <div class="faq-a">Sí. Garantía de devolución de 14 días sin preguntas. Si no te aporta valor, te devolvemos el 100%.</div>
-    </div>
-    <div class="faq">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Las plantillas están en español?</div>
-      <div class="faq-a">Todo el material está en español. La calculadora funciona en Google Sheets y Excel, compatible con cualquier configuración regional.</div>
-    </div>
-    <div class="faq">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Cómo recibo el material?</div>
-      <div class="faq-a">Al completar el pago, recibes acceso inmediato por email a un área de descarga con todos los archivos. PDFs, plantillas, spreadsheets — todo organizado y listo.</div>
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="sec bg-alt">
+  <div class="sec-inner sec-center">
+    <div class="sec-label" data-reveal>Cómo funciona</div>
+    <h2 class="sec-title" data-reveal>Del caos al ROI en 90 días</h2>
+    <p class="sec-desc" data-reveal>Un proceso probado en 3 pasos que puedes empezar hoy.</p>
+    <div class="steps-grid">
+      <div class="step-card" data-reveal="delay-1">
+        <div class="step-num">1</div>
+        <h3>Mide tu baseline</h3>
+        <p>Completa la auditoría de madurez y el baseline financiero. Sin esto, no puedes demostrar impacto.</p>
+      </div>
+      <div class="step-card" data-reveal="delay-2">
+        <div class="step-num">2</div>
+        <h3>Identifica quick wins</h3>
+        <p>Usa la matriz de oportunidad para encontrar los 2-3 casos de uso con mayor ROI y menor esfuerzo.</p>
+      </div>
+      <div class="step-card" data-reveal="delay-3">
+        <div class="step-num">3</div>
+        <h3>Escala con datos</h3>
+        <p>Mide resultados, presenta al C-Suite con el Playboard, y usa los datos para escalar.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EMAIL CAPTURE -->
-<section class="sec" data-reveal id="contacto">
-  <div class="email-sec">
-    <h3>📩 Gratis: Mini-guía ROI de IA</h3>
-    <p>Recibe una muestra gratuita del framework + tips semanales sobre implementación de IA empresarial.</p>
-    <form class="email-f" onsubmit="captureEmail(event)">
-      <input type="email" id="emailInput" placeholder="tu@email.com" required>
-      <button type="submit" class="btn">Enviar guía gratis</button>
-    </form>
-    <p style="font-size:12px;color:var(--faint);margin-top:12px">Sin spam. Baja cuando quieras. ~1 email/semana.</p>
-  </div>
-</section>
-
-<!-- CONTACT FORM (Enterprise) -->
-<section class="sec wrap" data-reveal id="contact-form">
-  <div class="sec-label">Contacto</div>
-  <h2 class="sec-title">¿Hablamos?</h2>
-  <p class="sec-desc">Para Enterprise, consultas personalizadas o partnerships.</p>
-  <div class="calc" style="margin:0">
-    <form onsubmit="submitContact(event)">
+<!-- ═══ CALCULADORA ═══ -->
+<section class="sec" id="calculadora">
+  <div class="sec-inner sec-center">
+    <div class="sec-label" data-reveal>Calculadora</div>
+    <h2 class="sec-title" data-reveal>Calcula tu ROI ahora</h2>
+    <p class="sec-desc" data-reveal>Obtén una estimación instantánea del retorno potencial de IA en tu organización.</p>
+    <div class="calc-wrap" data-reveal>
       <div class="calc-row">
-        <label>Nombre</label>
-        <input type="text" id="contactName" required placeholder="Tu nombre">
+        <label>Número de empleados</label>
+        <input type="number" id="calcEmps" min="1" value="50" placeholder="Ej: 50">
       </div>
       <div class="calc-row">
-        <label>Email</label>
-        <input type="email" id="contactEmail" required placeholder="tu@empresa.com">
+        <label>Coste medio por empleado (€/hora)</label>
+        <input type="number" id="calcCost" min="1" value="35" placeholder="Ej: 35">
       </div>
       <div class="calc-row">
-        <label>Empresa</label>
-        <input type="text" id="contactEmpresa" placeholder="Nombre de tu empresa">
+        <label>Horas semanales automatizables con IA</label>
+        <select id="calcHours">
+          <option value="2">2 horas (conservador)</option>
+          <option value="4" selected>4 horas (moderado)</option>
+          <option value="8">8 horas (optimista)</option>
+          <option value="12">12 horas (+ automatización profunda)</option>
+        </select>
       </div>
       <div class="calc-row">
-        <label>Mensaje</label>
-        <textarea id="contactMsg" required placeholder="¿En qué podemos ayudarte?" style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;min-height:100px;resize:vertical"></textarea>
+        <label>Coste estimado de implementación IA (€/año)</label>
+        <input type="number" id="calcImpl" min="0" value="15000" placeholder="Ej: 15000">
       </div>
-      <button type="submit" class="btn" style="width:100%">Enviar mensaje →</button>
-    </form>
+      <button class="calc-btn" onclick="calcROI()">Calcular mi ROI →</button>
+      <div class="calc-result" id="calcResult">
+        <div class="roi-big" id="roiValue">—</div>
+        <div class="roi-detail" id="roiDetail"></div>
+      </div>
+      <p class="calc-disclaimer">* Estimación basada en promedios del sector. Los resultados reales dependerán de la implementación específica. La calculadora es un punto de partida, no un análisis financiero definitivo.</p>
+    </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<div class="final" data-reveal>
+<!-- ═══ PRICING ═══ -->
+<section class="sec bg-alt" id="precios">
+  <div class="sec-inner sec-center">
+    <div class="sec-label" data-reveal>Precios</div>
+    <h2 class="sec-title" data-reveal>Invierte una vez, usa de por vida</h2>
+    <p class="sec-desc" data-reveal>Un solo pago. Acceso inmediato. Actualizaciones incluidas. Garantía de devolución de 14 días.</p>
+    <div class="pricing-grid">
+      <div class="price-card" data-reveal="delay-1">
+        <div class="price-label">Starter</div>
+        <h3>Framework esencial</h3>
+        <div class="price-amount"><span class="currency">€</span>47<span class="period">pago único</span></div>
+        <div class="price-sub">Para empezar con buen pie</div>
+        <ul class="price-features">
+          <li>Framework ROI de IA (42 págs)</li>
+          <li>Calculadora financiera interactiva</li>
+          <li>15 casos de uso por sector</li>
+          <li>Actualizaciones por email</li>
+          <li class="feature-no">Auditoría de Madurez IA</li>
+          <li class="feature-no">Playboard Ejecutivo</li>
+          <li class="feature-no">Framework de Gobernanza</li>
+        </ul>
+        <a href="https://buy.stripe.com/4gMeVc5Yu1OE2FYgECgA80b" class="btn btn-secondary" target="_blank" rel="noopener">Obtener Starter</a>
+      </div>
+      <div class="price-card featured" data-reveal="delay-2">
+        <div class="price-label">Professional</div>
+        <h3>Blueprint completo</h3>
+        <div class="price-amount"><span class="currency">€</span>97<span class="period">pago único</span></div>
+        <div class="price-sub">El más popular — Todo incluido</div>
+        <ul class="price-features">
+          <li><strong>Todo lo de Starter</strong></li>
+          <li>Auditoría de Madurez IA (50 pts)</li>
+          <li>Playboard Ejecutivo (12 slides)</li>
+          <li>Framework de Gobernanza</li>
+          <li>Plantillas de comunicación interna</li>
+          <li>Checklists de evaluación de proveedores</li>
+          <li>Actualizaciones prioritarias</li>
+        </ul>
+        <a href="https://buy.stripe.com/bJe3cu72ycti2FYagegA80c" class="btn btn-primary" target="_blank" rel="noopener">Obtener Professional →</a>
+      </div>
+      <div class="price-card" data-reveal="delay-3">
+        <div class="price-label">Enterprise</div>
+        <h3>Solución a medida</h3>
+        <div class="price-amount" style="font-size:36px">Custom<span class="period">contactar</span></div>
+        <div class="price-sub">Para equipos y organizaciones</div>
+        <ul class="price-features">
+          <li><strong>Todo lo de Professional</strong></li>
+          <li>Sesión 1:1 estratégica (60 min)</li>
+          <li>Personalización por industria</li>
+          <li>Licencia para equipo (hasta 10)</li>
+          <li>Workshop on-site remoto</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="#contacto" class="btn btn-secondary">Contactar ventas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="sec">
+  <div class="sec-inner sec-center">
+    <div class="sec-label" data-reveal>Impacto</div>
+    <h2 class="sec-title" data-reveal>Lo que dicen los primeros usuarios</h2>
+    <div class="testi-grid">
+      <div class="testi-card" data-reveal="delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Presentamos el Playboard Ejecutivo al Comité de Dirección y aprobaron nuestro presupuesto de IA en una reunión. El framework nos dio la estructura y el lenguaje que nos faltaba para comunicar valor."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Directora de Transformación Digital</div>
+            <div class="testi-role">Empresa de servicios profesionales · 800+ empleados</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-reveal="delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"La calculadora sola ya valió la pena. Pudimos demostrar que el ROI de automatizar reporting financiero era de 480% en 8 meses. Ahora la usamos para evaluar cada iniciativa."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">VP of Operations</div>
+            <div class="testi-role">E-commerce · 200+ empleados</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-reveal="delay-3">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Llevábamos 6 meses con pilotos de IA sin rumbo. El framework nos ayudó a priorizar 3 iniciativas con ROI claro y matar las otras 7. Ahora cada euro invertido tiene justificación."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">CTO</div>
+            <div class="testi-role">Startup B2B SaaS · 120 empleados</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-reveal="delay-4">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"La auditoría de madurez reveló que nuestro problema no era tecnología, era gobernanza. Reorganizamos nuestro approach y en 3 meses pasamos de 0 a 4 iniciativas con ROI positivo."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Head of Innovation</div>
+            <div class="testi-role">Grupo industrial · 2,000+ empleados</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec bg-alt" id="faq">
+  <div class="sec-inner sec-center">
+    <div class="sec-label" data-reveal>Preguntas frecuentes</div>
+    <h2 class="sec-title" data-reveal>FAQ</h2>
+    <div class="faq-wrap" data-reveal>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Esto es un curso o un framework?</button>
+        <div class="faq-a">Es un framework práctico con herramientas listas para usar. No hay vídeos ni clases. Recibes documentos, plantillas y una calculadora interactiva que puedes usar inmediatamente en tu organización. Piensa en él como un "kit de herramientas" para directivos.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Funciona para empresas pequeñas o startups?</button>
+        <div class="faq-a">Sí. El framework escala desde equipos de 5 personas hasta organizaciones de miles. La calculadora se adapta a cualquier tamaño y los casos de uso están segmentados por escala. De hecho, las empresas pequeñas suelen ver ROI más rápido porque la implementación es más ágil.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué experiencia previa necesito en IA?</button>
+        <div class="faq-a">Ninguna en IA técnica. Está diseñado para directivos, PMs, consultores y profesionales de operaciones que necesitan justificar y liderar iniciativas de IA. El lenguaje es de negocio, no de ingeniería.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Hay garantía de reembolso?</button>
+        <div class="faq-a">Sí. Garantía de devolución de 14 días sin preguntas. Si el material no te aporta valor, escríbenos y te devolvemos el 100% del importe. Sin fricción.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿El material está en español?</button>
+        <div class="faq-a">Todo el material está en español. La calculadora funciona en cualquier navegador y es compatible con Google Sheets y Excel.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cómo recibo el material después de comprar?</button>
+        <div class="faq-a">Al completar el pago con Stripe, serás redirigido a la página de acceso inmediato. También recibirás un email con los enlaces de descarga. Todo el material es HTML, así que funciona en cualquier dispositivo sin instalar nada.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Las plantillas son editables?</button>
+        <div class="faq-a">Sí. Todo el material es HTML que puedes abrir, editar y personalizar. El Playboard Ejecutivo está diseñado para que lo adaptes con tus datos, colores y branding antes de presentarlo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Incluye soporte o consultoría?</button>
+        <div class="faq-a">El plan Professional incluye email con respuesta en menos de 24h para dudas sobre el material. El plan Enterprise incluye una sesión 1:1 estratégica de 60 minutos y soporte prioritario.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EMAIL CAPTURE ═══ -->
+<section class="sec" id="lead-magnet">
+  <div class="sec-inner">
+    <div class="email-section" data-reveal>
+      <h3>📩 Gratis: Mini-guía ROI de IA</h3>
+      <p>Recibe una muestra gratuita del framework con los 3 errores más costosos al medir ROI de IA. Sin spam, baja cuando quieras.</p>
+      <form class="email-form" onsubmit="captureLead(event)">
+        <input type="email" id="leadEmail" placeholder="tu@email.com" required>
+        <button type="submit" class="btn btn-primary" id="leadBtn">Enviar guía gratis</button>
+      </form>
+      <p style="font-size:12px;color:var(--faint);margin-top:14px">~1 email/semana. Sin spam. Cancela cuando quieras.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="sec bg-alt" id="contacto">
+  <div class="sec-inner">
+    <div class="sec-label" data-reveal>Contacto</div>
+    <h2 class="sec-title" data-reveal style="margin-bottom:40px">¿Hablamos?</h2>
+    <div class="contact-grid">
+      <div class="contact-info" data-reveal="delay-1">
+        <h3>Para Enterprise, partnerships o consultas</h3>
+        <p>Si necesitas una solución personalizada, quieres licenciar el framework para tu equipo, o simplemente tienes preguntas, escríbenos.</p>
+        <div class="contact-detail">
+          <span class="contact-detail-icon">📧</span>
+          <span>hola@airoiblueprint.com</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-icon">⏱️</span>
+          <span>Respuesta en menos de 24h</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-icon">🌍</span>
+          <span>Remoto · Horario CET</span>
+        </div>
+      </div>
+      <div class="contact-form" data-reveal="delay-2">
+        <form onsubmit="submitContact(event)">
+          <div class="calc-row">
+            <label>Nombre</label>
+            <input type="text" id="contactName" required placeholder="Tu nombre">
+          </div>
+          <div class="calc-row">
+            <label>Email</label>
+            <input type="email" id="contactEmail" required placeholder="tu@empresa.com">
+          </div>
+          <div class="calc-row">
+            <label>Empresa</label>
+            <input type="text" id="contactEmpresa" placeholder="Nombre de tu empresa">
+          </div>
+          <div class="calc-row">
+            <label>Mensaje</label>
+            <textarea id="contactMsg" required placeholder="¿En qué podemos ayudarte?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%" id="contactBtn">Enviar mensaje →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<div class="cta-section" data-reveal>
   <h2>¿Listo para medir lo que importa?</h2>
   <p>Deja de adivinar. Empieza a calcular. El ROI de IA está a un clic.</p>
-  <a href="https://buy.stripe.com/bJe3cu72ycti2FYagegA80c" class="btn" style="padding:16px 48px;font-size:18px" target="_blank" rel="noopener">Obtener el blueprint — €97</a>
+  <a href="https://buy.stripe.com/bJe3cu72ycti2FYagegA80c" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+    Obtener el blueprint — €97
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+  <div class="cta-guarantee">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><path d="M8 1l2.2 4.5 5 .7-3.6 3.5.8 5L8 12.4 3.6 14.7l.8-5L.8 6.2l5-.7z"/></svg>
+    Garantía de devolución de 14 días · Pago seguro con Stripe
+  </div>
 </div>
 
-<!-- FOOTER -->
-<footer class="wrap">
-  <div class="brand">AI ROI Blueprint © 2025</div>
-  <div class="flinks">
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="width:24px;height:24px;background:var(--brand-g);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff">A</div>
+    <span>AI ROI Blueprint © 2025</span>
+  </div>
+  <div class="footer-links">
     <a href="#problema">Problema</a>
-    <a href="#incluye">Incluye</a>
+    <a href="#solucion">Incluye</a>
     <a href="#precios">Precios</a>
     <a href="#faq">FAQ</a>
-    <a href="mailto:hola@airoiblueprint.com">Contacto</a>
+    <a href="#contacto">Contacto</a>
+    <a href="/privacidad.html">Privacidad</a>
+    <a href="/terminos.html">Términos</a>
   </div>
 </footer>
 
-<!-- TOAST -->
+<!-- ═══ TOAST ═══ -->
 <div class="toast" id="toast"></div>
 
 <script>
-// Mobile nav
-document.getElementById('burger').addEventListener('click',function(){
-  document.getElementById('navLinks').classList.toggle('show');
-});
+// ── NAV ──
+var nav=document.getElementById('nav');
+var burger=document.getElementById('navBurger');
+var navLinks=document.getElementById('navLinks');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40)});
+burger.addEventListener('click',function(){navLinks.classList.toggle('open')});
+navLinks.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navLinks.classList.remove('open')})});
 
-// Scroll reveal
-var obs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
-},{threshold:0.15});
-document.querySelectorAll('[data-reveal]').forEach(function(el){obs.observe(el)});
+// ── SCROLL REVEAL ──
+var revealObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('[data-reveal]').forEach(function(el){revealObserver.observe(el)});
 
-// FAQ toggle
-function toggleFaq(el){
-  el.classList.toggle('open');
-  var a=el.nextElementSibling;
+// ── ANIMATED COUNTERS ──
+var counterObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.count').forEach(function(el){
+        var target=parseFloat(el.dataset.target);
+        var isDecimal=target%1!==0;
+        var duration=2000;
+        var start=0;
+        var startTime=null;
+        function animate(ts){
+          if(!startTime)startTime=startTime=ts;
+          var progress=Math.min((ts-startTime)/duration,1);
+          var eased=1-Math.pow(1-progress,3);
+          var current=start+(target-start)*eased;
+          el.textContent=isDecimal?current.toFixed(1):Math.round(current);
+          if(progress<1)requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      });
+      counterObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stats-wrap').forEach(function(el){counterObserver.observe(el)});
+
+// ── FAQ ──
+function toggleFaq(btn){
+  btn.classList.toggle('open');
+  var a=btn.nextElementSibling;
   a.classList.toggle('open');
 }
 
-// Calculator
+// ── CALCULATOR ──
 function calcROI(){
-  var emps=parseInt(document.getElementById('emps').value)||1;
-  var cost=parseFloat(document.getElementById('cost').value)||1;
-  var hours=parseInt(document.getElementById('hours').value)||0;
-  var impl=parseFloat(document.getElementById('impl').value)||0;
+  var emps=parseInt(document.getElementById('calcEmps').value)||1;
+  var cost=parseFloat(document.getElementById('calcCost').value)||1;
+  var hours=parseInt(document.getElementById('calcHours').value)||0;
+  var impl=parseFloat(document.getElementById('calcImpl').value)||0;
   var weeklySave=emps*cost*hours;
   var annualSave=weeklySave*52;
   var netSave=annualSave-impl;
-  var roi=impl>0?((netSave/impl)*100).toFixed(0):'∞';
-  var payback=netSave>0?(impl/(annualSave/12)).toFixed(1):'—';
-  document.getElementById('roiVal').textContent=roi+'% ROI';
-  document.getElementById('roiLbl').textContent='Ahorro anual: €'+annualSave.toLocaleString('es-ES')+' | Payback: '+payback+' meses';
-  document.getElementById('calcRes').style.display='block';
-  document.getElementById('calcRes').scrollIntoView({behavior:'smooth',block:'nearest'});
+  var roi=impl>0?Math.round((netSave/impl)*100):0;
+  var payback=annualSave>0?(impl/(annualSave/12)).toFixed(1):'—';
+  document.getElementById('roiValue').textContent=roi.toLocaleString('es-ES')+'% ROI';
+  document.getElementById('roiDetail').textContent='Ahorro anual estimado: €'+annualSave.toLocaleString('es-ES')+' · Payback: '+payback+' meses';
+  var res=document.getElementById('calcResult');
+  res.classList.add('show');
+  res.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-// Toast
+// ── TOAST ──
 var toastTimer;
-function showToast(msg){
+function showToast(msg,isError){
   var t=document.getElementById('toast');
   t.textContent=msg;
+  t.className='toast'+(isError?' error':'');
   t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(function(){t.classList.remove('show')},3500);
+  toastTimer=setTimeout(function(){t.classList.remove('show')},4000);
 }
 
-// Success handling
-var params=new URLSearchParams(window.location.search);
-var success=params.get('success');
-if(success==='starter'){showToast('¡Pago completado! Escríbenos a hola@airoiblueprint.com para acceder.');window.history.replaceState({},document.title,window.location.pathname);}
-// Contact form → send via API
+// ── API CALL ──
+function apiCall(payload,btn,btnText,successMsg){
+  btn.disabled=true;
+  btn.textContent='Enviando...';
+  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d.ok){showToast(successMsg);}else{showToast(d.error||'Error. Intenta de nuevo.',true);}
+    })
+    .catch(function(){showToast('Error de conexión. Escríbenos a hola@airoiblueprint.com',true);})
+    .finally(function(){btn.disabled=false;btn.textContent=btnText;});
+}
+
+// ── LEAD CAPTURE ──
+function captureLead(e){
+  e.preventDefault();
+  var email=document.getElementById('leadEmail').value;
+  if(!email)return;
+  apiCall({email:email,type:'lead'},document.getElementById('leadBtn'),'Enviar guía gratis','¡Revisa tu bandeja! Te enviamos la guía gratuita.');
+  document.getElementById('leadEmail').value='';
+}
+
+// ── CONTACT FORM ──
 function submitContact(e){
   e.preventDefault();
   var name=document.getElementById('contactName').value;
   var email=document.getElementById('contactEmail').value;
   var empresa=document.getElementById('contactEmpresa').value;
   var msg=document.getElementById('contactMsg').value;
-  if(!name||!email||!msg) return;
-  var btn=e.target.querySelector('button');
-  btn.textContent='Enviando...';
-  btn.disabled=true;
-  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,empresa:empresa,message:msg,type:'contact'})})
-    .then(function(r){return r.json()})
-    .then(function(d){
-      if(d.ok){showToast('¡Mensaje enviado! Te respondemos en menos de 24h.');e.target.reset();}
-      else{showToast(d.error||'Error al enviar. Intenta de nuevo.');}
-    })
-    .catch(function(){showToast('Error de conexión. Escríbenos a hola@airoiblueprint.com');})
-    .finally(function(){btn.textContent='Enviar mensaje →';btn.disabled=false;});
+  if(!name||!email||!msg)return;
+  apiCall({name:name,email:email,empresa:empresa,message:msg,type:'contact'},document.getElementById('contactBtn'),'Enviar mensaje →','¡Mensaje enviado! Te respondemos en menos de 24h.');
+  e.target.reset();
 }
-function captureEmail(e){
-  e.preventDefault();
-  var email=document.getElementById('emailInput').value;
-  if(!email) return;
-  var btn=e.target.querySelector('button');
-  btn.textContent='Enviando...';
-  btn.disabled=true;
-  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,type:'lead'})})
-    .then(function(r){return r.json()})
-    .then(function(d){
-      if(d.ok){showToast('¡Revisa tu bandeja! Te enviamos la guía gratuita.');document.getElementById('emailInput').value='';}
-      else{showToast(d.error||'Error al enviar. Intenta de nuevo.');}
-    })
-    .catch(function(){showToast('Error de conexión. Intenta de nuevo.');})
-    .finally(function(){btn.textContent='Enviar guía gratis';btn.disabled=false;});
-}
+
+// ── SUCCESS HANDLING ──
+var params=new URLSearchParams(window.location.search);
+var success=params.get('success');
+if(success==='starter'){showToast('¡Pago completado! Accede a tu material en la sección de descarga.');window.history.replaceState({},document.title,window.location.pathname);}
+else if(success==='professional'){showToast('¡Pago completado! Accede a todo el material + recursos Professional.');window.history.replaceState({},document.title,window.location.pathname);}
 </script>
 </body>
 </html>
