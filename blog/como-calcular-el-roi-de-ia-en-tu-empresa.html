@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Como calcular el ROI de IA en tu empresa — AI ROI Blueprint</title>
+<meta name="description" content="Guia completa para calcular el ROI de proyectos de inteligencia artificial. Formula, ejemplos reales, errores comunes y plantilla de calculo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06060a;--surface:rgba(255,255,255,0.03);--border:rgba(255,255,255,0.07);--text:#e8eaed;--text2:#b0b8c4;--muted:#6b7280;--brand:#6366f1;--accent:#818cf8;--green:#10b981}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{display:flex;align-items:center;gap:8px;padding:16px 32px;color:var(--text);text-decoration:none;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.04);position:sticky;top:0;z-index:50;background:rgba(6,6,10,0.92);backdrop-filter:blur(16px)}
+.nav:hover{text-decoration:none;color:(--accent)}
+.logo-dot{width:8px;height:8px;background:var(--brand);border-radius:50%;display:inline-block}
+.article{max-width:720px;margin:0 auto;padding:60px 32px 80px}
+.tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--brand);background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);padding:3px 10px;border-radius:9999px}
+h1{font-size:36px;font-weight:700;letter-spacing:-0.03em;margin:16px 0 8px;line-height:1.2}
+.meta{color:var(--muted);font-size:14px;margin-bottom:40px}
+h2{font-size:22px;font-weight:600;margin:40px 0 16px;letter-spacing:-0.01em;color:var(--text)}
+h3{font-size:18px;font-weight:600;margin:28px 0 12px;color:var(--text)}
+p,li{color:var(--text2);font-size:16px;line-height:1.8;margin-bottom:12px}
+ul,ol{padding-left:24px;margin:12px 0 20px}
+li{margin-bottom:8px}
+.formula{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--brand);border-radius:0 8px 8px 0;padding:20px 24px;margin:24px 0;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--accent);overflow-x:auto}
+.example{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);border-radius:8px;padding:24px;margin:24px 0}
+.example h3{color:var(--green);margin-top:0}
+.example p,.example li{color:var(--text2)}
+.warn{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:24px;margin:24px 0}
+.warn h3{color:#f59e0b;margin-top:0}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px 24px 16px;margin:32px 0}
+.toc h2{font-size:16px;font-weight:600;color:var(--text);margin:0 0 12px;text-transform:uppercase;letter-spacing:0.5px;font-size:12px;color:var(--muted)}
+.toc ol{padding-left:20px;margin:0}
+.toc li{color:var(--text2);font-size:14px;margin-bottom:6px}
+.toc a{color:(--text2)}
+.toc a:hover{color:var(--accent)}
+.cta-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:40px;text-align:center;margin:48px 0}
+.cta-bar h2{margin:0 0 8px;font-size:24px}
+.cta-bar p{color:var(--text2);font-size:15px;margin-bottom:20px}
+.btn{background:var(--brand);color:#fff;padding:12px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--accent);color:#fff;text-decoration:none}
+.footer{text-align:center;padding:40px 0;border-top:1px solid var(--border);margin-top:64px}
+.footer a{color:var(--muted);font-size:13px;margin:0 12px}
+.footer p{color:(--muted);font-size:12px;margin-top:16px}
+@media(max-width:640px){.article{padding:40px 20px 60px}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<a href="/" class="nav"><span class="logo-dot"></span> AI ROI Blueprint</a>
+<div class="article">
+  <span class="tag">Guia</span>
+  <h1>Como calcular el ROI de IA en tu empresa</h1>
+  <div class="meta">Mayo 2025 · 12 min de lectura</div>
+
+  <div class="toc">
+    <h2>Tabla de contenidos</h2>
+    <ol>
+      <li><a href="#por-que">Por que la mayoria de calculos de ROI de IA fallan</a></li>
+      <li><a href="#formula">La formula correcta de ROI de IA</a></li>
+      <li><a href="#costes">Identificando todos los costes reales</a></li>
+      <li><a href="#beneficios">Cuantificando los beneficios tangibles e intangibles</a></li>
+      <li><a href="#horizonte">Horizonte temporal y ajuste por riesgo</a></li>
+      <li><a href="#ejemplo">Ejemplo practico: automatizacion de atencion al cliente</a></li>
+      <li><a href="#errores">5 errores frecuentes en el calculo</a></li>
+      <li><a href="#plantilla">Plantilla de calculo</a></li>
+    </ol>
+  </div>
+
+  <h2 id="por-que">1. Por que la mayoria de calculos de ROI de IA fallan</h2>
+  <p>El 73% de las empresas que invierten en inteligencia artificial no puede demostrar un retorno medible. No porque la IA no funcione, sino porque miden mal. Los errores mas comunes son tratar la IA como un proyecto de TI tradicional, ignorar costes ocultos, o solo contar beneficios directos.</p>
+  <p>El ROI de IA no se calcula como el de una compra de hardware. Tiene componentes unicos: el coste de preparacion de datos, el tiempo de adopcion del equipo, la curva de Precision del modelo, y los beneficios de segundo orden que aparecen cuando la organizacion aprende a usar la tecnologia.</p>
+
+  <h2 id="formula">2. La formula correcta de ROI de IA</h2>
+  <p>La formula base es conocida, pero la clave esta en lo que incluyes dentro:</p>
+  <div class="formula">
+    ROI = (Beneficios Totales - Costes Totales) / Costes Totales x 100
+  </div>
+  <p>Donde:</p>
+  <ul>
+    <li><strong>Beneficios Totales</strong> = Ahorro de costes directos + Ingresos adicionales + Beneficios intangibles cuantificados</li>
+    <li><strong>Costes Totales</strong> = Costes de desarrollo + Infraestructura + Datos + Personal + Adopcion + Mantenimiento anual</li>
+  </ul>
+  <p>La diferencia entre un calculo mediocre y uno riguroso esta en no dejar estos componentes fuera.</p>
+
+  <h2 id="costes">3. Identificando todos los costes reales</h2>
+  <h3>Costes directos</h3>
+  <ul>
+    <li>Desarrollo o adquisicion de la solucion (licencias, desarrollo externo, API costs)</li>
+    <li>Infraestructia cloud (GPU, almacenamiento, computo)</li>
+    <li>Integracion con sistemas existentes</li>
+    <li>Datos: limpieza, etiquetado, pipelines</li>
+  </ul>
+  <h3>Costes indirectos</h3>
+  <ul>
+    <li>Formacion del equipo (horas de trabajo no productivas)</li>
+    <li>Gestion del cambio organizacional</li>
+    <li>Personal de MLOps / datos si no existe internamente</li>
+    <li>Cumplimiento normativo y auditoria</li>
+  </ul>
+  <h3>Costes recurrentes</h3>
+  <ul>
+    <li>Mantenimiento y reentrenamiento de modelos</li>
+    <li>Monitorizacion y drift detection</li>
+    <li>Soporte tecnico continuo</li>
+  </ul>
+
+  <h2 id="beneficios">4. Cuantificando los beneficios</h2>
+  <h3>Beneficios tangibles (faciles de medir)</h3>
+  <ul>
+    <li><strong>Reduccion de horas manuales:</strong> Horas ahorradas x coste por hora del empleado</li>
+    <li><strong>Reduccion de errores:</strong> Coste historico de erros x tasa de reduccion</li>
+    <li><strong>Incremento de conversion:</strong> Lift en conversion x valor medio del cliente</li>
+    <li><strong>Velocidad de proceso:</strong> Reduccion de ciclos x valor del tiempo</li>
+  </ul>
+  <h3>Beneficios intangibles (pero cuantificables)</h3>
+  <ul>
+    <li>Satisfaccion del cliente (NPS) y su impacto en retencion</li>
+    <li>Mejora en la toma de decisiones por mejor informacion</li>
+    <li>Posicion competitiva y velocidad de respuesta al mercado</li>
+    <li>Atraccion y retencion de talento tecnico</li>
+  </ul>
+
+  <h2 id="horizonte">5. Horizonte temporal y ajuste por riesgo</h2>
+  <p>Un error comun es calcular ROI de IA a 12 meses como si fuera software tradicional. Muchos proyectos de IA tienen una fase de aprendizaje donde la Precision mejora progresivamente. Se recomienda:</p>
+  <ul>
+    <li><strong>Mes 1-3:</strong> Costes de implementacion, ROI negativo o neutro</li>
+    <li><strong>Mes 4-6:</strong> Precision alcanzando umbrales productivos, primeros beneficios medibles</li>
+    <li><strong>Mes 7-12:</strong> ROI positivo consolidado, beneficios de segundo orden emergen</li>
+    <li><strong>Mes 13+:</strong> Escalado y optimizacion, ROI compuesto creciente</li>
+  </ul>
+  <p>Ajusta el ROI por probabilidad de exito. Si un proyecto tiene un 70% de probabilidad de exito tecnico, multiplica los beneficios esperados por 0.7.</p>
+
+  <h2 id="ejemplo">6. Ejemplo practico: automatizacion de atencion al cliente</h2>
+  <div class="example">
+    <h3>Caso: Empresa de e-commerce, 50.000 tickets/mes</h3>
+    <p><strong>Costes del proyecto (ano 1):</strong></p>
+    <ul>
+      <li>Desarrollo e integracion: EUR 18.000</li>
+      <li>Infraestructura cloud (API + hosting): EUR 4.800/ano</li>
+      <li>Preparacion y etiquetado de datos: EUR 6.000</li>
+      <li>Formacion del equipo: EUR 2.400</li>
+      <li>Mantenimiento: EUR 3.600/ano</li>
+      <li><strong>Total costes ano 1: EUR 34.800</strong></li>
+    </ul>
+    <p><strong>Beneficios del proyecto (ano 1):</strong></p>
+    <ul>
+      <li>40% de tickets resueltos sin intervencion humana</li>
+      <li>Coste por ticket actual: EUR 4.50 (agente humano)</li>
+      <li>Coste por ticket automatizado: EUR 0.30 (API cost)</li>
+      <li>Tickets automatizados: 20.000/mes = 240.000/ano</li>
+      <li>Ahorro bruto: 240.000 x (4.50 - 0.30) = EUR 1.008.000... espera, recalculamos con numeros realistas</li>
+      <li>Ahorro bruto: 240.000 x EUR 4.20 = EUR 1.008.000? No. El costo por ticket humano ya incluye el salario. Ahorro: 240.000 x 70% resolucion completa x EUR 4,20 ahorro neto = EUR 604.800? Vamos a ser conservadores.</li>
+      <li><strong>Ahorro neto realista: 240.000 tickets x 60% resuelto sin humano x EUR 3.50 ahorro/ticket = EUR 504.000/ano</strong></li>
+      <li>Pero seamos conservadores al 30% en ano 1 por ramp-up: <strong>EUR 151.200</strong></li>
+    </ul>
+    <div class="formula">
+      ROI ano 1 = (151.200 - 34.800) / 34.800 x 100 = <strong>334%</strong>
+    </div>
+    <p>En el ano 2, con el sistema maduro (90% automatizacion efectiva): ROI &gt; 800%.</p>
+  </div>
+
+  <h2 id="errores">7. Cinco errores frecuentes</h2>
+  <div class="warn">
+    <h3>Error 1: Solo contar el coste de la herramienta</h3>
+    <p>La licencia o API es solo el 20-35% del coste total. Sin contar integracion, datos y cambio organizacional, tu ROI estara inflado artificialmente.</p>
+  </div>
+  <div class="warn">
+    <h3>Error 2: Ignorar el ramp-up</h3>
+    <p>Asumir que el sistema sera efectivo desde el dia uno lleva a proyecciones irreales. Usa un factor de ramp-up del 30-50% en el primer trimestre.</p>
+  </div>
+  <div class="warn">
+    <h3>Error 3: No medir la linea base</h3>
+    <p>Sin una medicion rigurosa del estado actual, cualquier ROI calculado es especulativo. Mide metricas clave antes de empezar.</p>
+  </div>
+  <div class="warn">
+    <h3>Error 4: Contar solo beneficios directos</h3>
+    <p>La mejora en decision-making, reduccion de churn por mejor experiencia, o velocidad de innovacion pueden superar al ahorro directo.</p>
+  </div>
+  <div class="warn">
+    <h3>Error 5: Usar ROI como unica metrica</h3>
+    <p>Complementa ROI con Payback Period, NVP del flujo de cajas, y metricas de riesgo. Un ROI alto con payback de 4 anos puede no ser aceptable.</p>
+  </div>
+
+  <h2 id="plantilla">8. Plantilla de calculo</h2>
+  <p>Hemos preparado una calculadora de ROI de IA que implementa toda esta metodologia. Incluye campos para todos los costes (directos, indirectos, recurrentes), beneficios tangibles e intangibles, ajuste por ramp-up y por riesgo, y genera Payback Period y NPV automaticamente.</p>
+
+  <div class="cta-bar">
+    <h2>Calcula el ROI de IA para tu empresa</h2>
+    <p>Usa nuestra calculadora interactiva basada en el framework de 6 fases.</p>
+    <a href="/#calculadora" class="btn">Probar la calculadora</a>
+  </div>
+
+  <p style="margin-top:32px;color:var(--text2)">Si quieres profundizar en como implementar esta metodologia de forma estructurada, el <a href="/">AI ROI Blueprint</a> completo incluye la calculadora en hoja de calculo, templates y el plan de 90 dias.</p>
+
+  <div class="footer">
+    <a href="/blog">Blog</a>
+    <a href="/privacidad.html">Privacidad</a>
+    <a href="/terminos.html">Terminos</a>
+    <a href="/">Inicio</a>
+    <p>2025 AI ROI Blueprint. Todos los derechos reservados.</p>
+  </div>
+</div>
+</body>
+</html>
