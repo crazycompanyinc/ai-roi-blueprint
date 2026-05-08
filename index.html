@@ -392,6 +392,34 @@ footer .flinks a:hover{color:var(--text)}
   </div>
 </section>
 
+<!-- CONTACT FORM (Enterprise) -->
+<section class="sec wrap" data-reveal id="contact-form">
+  <div class="sec-label">Contacto</div>
+  <h2 class="sec-title">¿Hablamos?</h2>
+  <p class="sec-desc">Para Enterprise, consultas personalizadas o partnerships.</p>
+  <div class="calc" style="margin:0">
+    <form onsubmit="submitContact(event)">
+      <div class="calc-row">
+        <label>Nombre</label>
+        <input type="text" id="contactName" required placeholder="Tu nombre">
+      </div>
+      <div class="calc-row">
+        <label>Email</label>
+        <input type="email" id="contactEmail" required placeholder="tu@empresa.com">
+      </div>
+      <div class="calc-row">
+        <label>Empresa</label>
+        <input type="text" id="contactEmpresa" placeholder="Nombre de tu empresa">
+      </div>
+      <div class="calc-row">
+        <label>Mensaje</label>
+        <textarea id="contactMsg" required placeholder="¿En qué podemos ayudarte?" style="width:100%;padding:12px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;min-height:100px;resize:vertical"></textarea>
+      </div>
+      <button type="submit" class="btn" style="width:100%">Enviar mensaje →</button>
+    </form>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <div class="final" data-reveal>
   <h2>¿Listo para medir lo que importa?</h2>
@@ -464,14 +492,41 @@ function showToast(msg){
 var params=new URLSearchParams(window.location.search);
 var success=params.get('success');
 if(success==='starter'){showToast('¡Pago completado! Escríbenos a hola@airoiblueprint.com para acceder.');window.history.replaceState({},document.title,window.location.pathname);}
-else if(success==='professional'){showToast('¡Pago completado! Escríbenos a hola@airoiblueprint.com para acceder + Slack.');window.history.replaceState({},document.title,window.location.pathname);}
+// Contact form → send via API
+function submitContact(e){
+  e.preventDefault();
+  var name=document.getElementById('contactName').value;
+  var email=document.getElementById('contactEmail').value;
+  var empresa=document.getElementById('contactEmpresa').value;
+  var msg=document.getElementById('contactMsg').value;
+  if(!name||!email||!msg) return;
+  var btn=e.target.querySelector('button');
+  btn.textContent='Enviando...';
+  btn.disabled=true;
+  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,empresa:empresa,message:msg,type:'contact'})})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d.ok){showToast('¡Mensaje enviado! Te respondemos en menos de 24h.');e.target.reset();}
+      else{showToast(d.error||'Error al enviar. Intenta de nuevo.');}
+    })
+    .catch(function(){showToast('Error de conexión. Escríbenos a hola@airoiblueprint.com');})
+    .finally(function(){btn.textContent='Enviar mensaje →';btn.disabled=false;});
+}
 function captureEmail(e){
   e.preventDefault();
   var email=document.getElementById('emailInput').value;
-  if(email){
-    showToast('¡Enviado! Revisa tu bandeja para la guía gratuita.');
-    document.getElementById('emailInput').value='';
-  }
+  if(!email) return;
+  var btn=e.target.querySelector('button');
+  btn.textContent='Enviando...';
+  btn.disabled=true;
+  fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,type:'lead'})})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d.ok){showToast('¡Revisa tu bandeja! Te enviamos la guía gratuita.');document.getElementById('emailInput').value='';}
+      else{showToast(d.error||'Error al enviar. Intenta de nuevo.');}
+    })
+    .catch(function(){showToast('Error de conexión. Intenta de nuevo.');})
+    .finally(function(){btn.textContent='Enviar guía gratis';btn.disabled=false;});
 }
 </script>
 </body>
